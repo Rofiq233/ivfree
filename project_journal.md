@@ -1,0 +1,33 @@
+# 🚀 ivfree Project Journal
+
+## Project Information
+
+Project Name:
+ivfree
+
+Project Type:
+
+Shopify store
+
+Tech Stack:
+
+
+---
+
+# Version History
+
+
+## v0.1.0
+
+## Completed:
+
+- Setup basic file folder shopify
+- Initialized Git repository
+- Created first Git commit
+- Created GitHub repository
+- Connected local repository with GitHub
+- Pushed project to GitHub
+
+
+## Learned:
+
