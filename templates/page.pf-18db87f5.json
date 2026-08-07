@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-18db87f5": {
+      "type": "pf-18db87f5",
+      "settings": {
+        "pf_73fefad2_value": "<br>30 day money-back guarantee",
+        "pf_747f73fe_value": "<br>Free shipping on orders 999",
+        "pf_fad2caac_value": "<br>HSA/FSA Eligible"
+      }
+    }
+  },
+  "order": [
+    "pf-18db87f5"
+  ]
+}
