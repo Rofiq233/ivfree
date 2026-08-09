@@ -31,3 +31,9 @@ Tech Stack:
 
 ## Learned:
 
+## v0.2.0
+
+updated button sheme
+hero added and modify
+header modify
+
