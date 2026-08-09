@@ -36,7 +36,7 @@ slideshow-component .slideshow.banner {
 .slideshow__text.banner__box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   max-width: 54.5rem;
 }
 

@@ -98,7 +98,7 @@
   {%- endif -%}
 
   <div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    class="slideshow banner banner--{{section.settings.slide_height_mobile}}-mobile banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
@@ -121,7 +121,7 @@
         tabindex="-1"
       >
         <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-          {%- if block.settings.image -%}
+          
             {%- liquid
               assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
               if section.settings.image_behavior == 'ambient'
@@ -137,26 +137,36 @@
               endif
             -%}
             {%- if forloop.first %}
-              {{
+              {% render 'responsive-picture',
+                  desktop_image: block.settings.desktop_image,
+                  mobile_image: block.settings.mobile_image,
+                  loading: 'eager',
+                  fetchpriority: 'high',
+                  sizes: '100vw',
+                  class: 'banner__image',
+                  placeholder:"hero-apparel-2"
+            %}
+              {% comment %} {{
                 block.settings.image
                 | image_url: width: 3840
                 | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-              }}
+              }} {% endcomment %}
             {%- else -%}
-              {{
+              {% comment %} {{
                 block.settings.image
                 | image_url: width: 3840
                 | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
-              }}
+              }} {% endcomment %}
+               {% render 'responsive-picture',
+                  desktop_image: block.settings.desktop_image,
+                  mobile_image: block.settings.mobile_image,
+                  loading: 'eager',
+                  fetchpriority: 'high',
+                  sizes: '100vw',
+                  class: 'banner__image',
+                  placeholder:"hero-apparel-2"
+                  %}
             {%- endif -%}
-          {%- else -%}
-            {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
-            {%- if placeholder_slide == 1 -%}
-              {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
-            {%- else -%}
-              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            {%- endif -%}
-          {%- endif -%}
         </div>
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll and forloop.index == 1 %} scroll-trigger animate--slide-in{% endif %}">
           <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
@@ -170,18 +180,31 @@
                 <p>{{ block.settings.subheading }}</p>
               </div>
             {%- endif -%}
-            {%- if block.settings.button_label != blank -%}
+            {%- if block.settings.btn_one != blank or block.settings.btn_two -%}
               <div class="banner__buttons">
-                <a
-                  {% if block.settings.link %}
-                    href="{{ block.settings.link }}"
-                  {% else %}
-                    role="link" aria-disabled="true"
-                  {% endif %}
-                  class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}"
-                >
-                  {{- block.settings.button_label | escape -}}
-                </a>
+                
+                {%- if block.settings.btn_one != blank -%}
+
+                  <a href="{{ block.settings.url_one }}" role="link" aria-disabled="false"
+                    class="button button--{{ block.settings.button_style }} {% if block.settings.primary_without_border %} button_without_border {% endif %}"
+                  >
+                    {{- block.settings.btn_one | escape -}}
+                     {% render 'icons' icon:'button-arrow', width: '16', height: '16', class: 'icon-arrow' %}
+                  </a>
+                  
+                {%- endif -%}
+
+                {%- if block.settings.btn_two != blank -%}
+
+                  <a href="{{ block.settings.url_two }}" role="link" aria-disabled="false"
+                    class="button button--{{ block.settings.button_style_two }} {% if block.settings.secondary_without_border %} button_without_border {% endif %}"
+                  >
+                    <span>{{- block.settings.btn_two | escape -}}</span>
+                     {% render 'icons' icon:'button-arrow', width: '16', height: '16', class: 'icon-arrow' %}
+                  </a>
+                  
+                {%- endif -%}
+
               </div>
             {%- endif -%}
           </div>
@@ -312,6 +335,27 @@
     },
     {
       "type": "select",
+      "id": "slide_height_mobile",
+      "options": [
+       
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large",
+      "label": "Large"
+    },
+    {
+      "type": "select",
       "id": "slider_visual",
       "options": [
         {
@@ -390,10 +434,20 @@
       "name": "t:sections.slideshow.blocks.slide.name",
       "limit": 5,
       "settings": [
+        // {
+        //   "type": "image_picker",
+        //   "id": "image",
+        //   "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+        // },
         {
           "type": "image_picker",
-          "id": "image",
-          "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+          "id": "desktop_image",
+          "label": "Image for desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Image for mobile"
         },
         {
           "type": "range",
@@ -453,23 +507,95 @@
           "type": "header",
           "content": "t:sections.slideshow.blocks.slide.settings.header_button.content"
         },        
+       {
+        "type": "header",
+        "content": "Button one"
+       },
+       
+       {
+        "type": "text",
+        "id": "btn_one",
+        "label": "Button text",
+         "default":"Shop now"
+       },
         {
-          "type": "text",
-          "id": "button_label",
-          "default": "t:sections.slideshow.blocks.slide.settings.button_label.default",
-          "label": "t:sections.slideshow.blocks.slide.settings.button_label.label", 
-          "info": "t:sections.slideshow.blocks.slide.settings.button_label.info"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "t:sections.slideshow.blocks.slide.settings.link.label"
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "secondary-outline",
+              "label": "Secondary Outline"
+            }
+          ]
         },
         {
           "type": "checkbox",
-          "id": "button_style_secondary",
-          "label": "t:sections.slideshow.blocks.slide.settings.secondary_style.label",
-          "default": false
+          "id": "primary_without_border",
+          "label": "Without border",
+          "visible_if": "{{ block.settings.button_style == 'secondary-outline' or block.settings.button_style == 'primary-outline' }}"
+        },
+        {
+          "type": "url",
+          "id": "url_one",
+          "label": "Url"
+        },
+       {
+        "type": "header",
+        "content": "Button two"
+       },
+       
+       {
+        "type": "text",
+        "id": "btn_two",
+        "label": "Button text",
+         "default":"Shop now"
+       },
+        {
+          "type": "select",
+          "id": "button_style_two",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "secondary-outline",
+              "label": "Secondary Outline"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "secondary_without_border",
+          "label": "Without border",
+          "visible_if": "{{ block.settings.button_style_two == 'secondary-outline' or block.settings.button_style_two == 'primary-outline' }}"
+        },
+        {
+          "type": "url",
+          "id": "url_two",
+          "label": "Url"
         },
         {
           "type": "header",
