@@ -1,0 +1,106 @@
+{{- 'section-gallery.css' | asset_url | stylesheet_tag -}}
+
+{%- liquid
+ assign section_settings = section.settings
+    assign container = section_settings.width 
+
+  assign desktop_grid = section_settings.desktop_grid
+  assign tab_grid = section_settings.tab_grid
+  assign mobile_grid = section_settings.mobile_grid
+  assign gap = section_settings.gap
+
+  assign enable_pagination = section_settings.enable_pagination
+  assign enable_navigation = section_settings.enable_navigation
+  assign pagination_type = section_settings.pagination_type
+
+  assign loop = section_settings.loop_enabled
+  assign autoplay = section_settings.autoplay_enabled
+  assign delay = section_settings.autoplay_timeout | times: 1000
+-%}
+
+{% capture data_config %}
+  data-option='{
+    "desktopSlider": true,
+    "spaceBetween": {{ gap }},
+    "centeredSlides": false,
+    "loop": {{ loop }},
+    "speed": 700,
+    "freeMode": false,
+    "autoplay": {
+      "enabled": {{ autoplay }},
+      "delay": {{ delay }},
+      "disableOnInteraction": false
+    },
+    "breakpoints": {
+      "300": { "slidesPerView": {{ mobile_grid }},"spaceBetween":{{gap}} },
+      "750": { "slidesPerView": {{ tab_grid }},"spaceBetween":{{gap}} },
+      "1200": { "slidesPerView": {{ desktop_grid }},"spaceBetween":{{gap}} }
+    }
+
+    {% if enable_pagination and pagination_type == 'dots' %}
+      ,"pagination": {
+        "el": ".swiper-pagination",
+        "clickable": true,
+        "type": "bullets"
+      }
+    {% endif %}
+
+    {% if enable_pagination and pagination_type == 'number' %}
+      ,"pagination": {
+        "el": ".swiper-pagination-number",
+        "type": "fraction"
+      }
+    {% endif %}
+
+    {% if enable_navigation %}
+      ,"navigation": {
+        "nextEl": ".swiper-button-next",
+        "prevEl": ".swiper-button-prev"
+      }
+    {% endif %}
+  }'
+{% endcapture %}
+
+
+
+<div
+  class="gallery-sectio "
+  role="region"
+  aria-label="gallery Section" 
+> 
+  <div class="page-width">
+    <slideshow-swiper>
+      <div class="gallery-card-wrap swiper slideshow__swiper" {{ data_config }}>
+        <div
+          class="swiper-wrapper"
+       >  
+
+
+
+        </div>
+        
+      </div>
+    </slideshow-swiper>
+  </div>
+</div>
+  
+
+
+
+{% schema %}
+  {
+    "name": "Video review",
+    "tag": "section",
+    "class": "video_review",
+    "settings": [
+      
+    ],
+    "presets": [
+      {
+        "name": "Video review",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

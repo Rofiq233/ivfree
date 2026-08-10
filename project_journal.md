@@ -45,3 +45,6 @@ header modify
 updated font
 
 scheme 3 , image banner ( text, heading,bg )
+
+## v0.4.0
+-- video with text scheme 1, ( text, heading, primary btn)

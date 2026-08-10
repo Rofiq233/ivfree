@@ -148,24 +148,24 @@
         "show_text_below": true
       }
     },
-    "image_with_text_DRDRC3": {
-      "type": "image-with-text",
+    "text_with_video_RMrUEc": {
+      "type": "text-with-video",
       "blocks": {
-        "heading_tTA6Dj": {
+        "heading_t4eYMr": {
           "type": "heading",
           "settings": {
             "heading": "Image with text",
             "heading_size": "h1"
           }
         },
-        "text_rLJN7V": {
+        "text_mX3WVh": {
           "type": "text",
           "settings": {
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "text_style": "body"
           }
         },
-        "button_WYrGxQ": {
+        "button_GmAgBK": {
           "type": "button",
           "settings": {
             "button_label": "Button label",
@@ -175,15 +175,22 @@
         }
       },
       "block_order": [
-        "heading_tTA6Dj",
-        "text_rLJN7V",
-        "button_WYrGxQ"
+        "heading_t4eYMr",
+        "text_mX3WVh",
+        "button_GmAgBK"
       ],
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "Text with video",
       "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
+        "source": "uploaded",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "uploaded_video": "shopify://files/videos/video_1786324517611.mp4",
+        "uploaded_video_mobile": "shopify://files/videos/video_1786324517611.mp4",
+        "enable_autoplay": true,
+        "enable_loop_video": true,
+        "enable_mute_video": true,
+        "height": "medium",
+        "desktop_image_width": "large",
+        "layout": "text_first",
         "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
@@ -255,7 +262,7 @@
     "slideshow",
     "featured-collection-0",
     "image_banner_FU9Kci",
-    "image_with_text_DRDRC3",
+    "text_with_video_RMrUEc",
     "multicolumn_GGrKdW"
   ]
 }

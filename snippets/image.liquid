@@ -1,0 +1,109 @@
+{%- comment -%}
+ Next-Gen Shopify Image Snippet (Retina-ready)
+✔ Native lazy loading
+✔ Mobile + desktop srcset
+✔ CLS safe (width/height)
+✔ LCP safe (hero eager support)
+✔ Focal point support
+✔ fetchpriority support
+✔ <noscript> fallback
+Usage:
+
+{%- render 'image',
+  image: product.featured_media,
+  src_width: 800,
+  lazy_load: true,
+  widths: "90,120,375,550,750,1100,1500,1780,2000",
+  mobile_widths: "90,120,320,480,640",
+  class: "rounded-lg",
+  fetchpriority: nil
+-%}
+{%- endcomment -%}
+
+{%- assign lazy_load = lazy_load | default: true, allow_false: true -%}
+{%- assign widths_array = widths | default: "90,120,375,550,750,1100,1500,1780,2000" | split: "," -%}
+{%- assign mobile_array = mobile_widths | default: "40,90,120,320,480,640" | split: "," -%}
+{%- assign class = class | default: "" -%}
+{%- assign attr = attr | default: "" -%}
+{%- assign sizes = sizes | default: "100vw" -%}
+
+{%- if image -%}
+
+  {%- assign desktop_srcset = '' -%}
+  {%- assign mobile_srcset = '' -%}
+
+  {%- comment -%} Desktop srcset with retina (1x & 2x) {%- endcomment -%}
+  {%- for w in widths_array -%}
+    {%- assign wi = w | plus: 0 -%}
+    {%- assign url_1x = image | image_url: width: wi -%}
+    {%- assign url_2x = image | image_url: width: wi | times: 2 -%} 
+
+    {%- if forloop.last -%}
+      {%- assign desktop_srcset = desktop_srcset | append: url_1x | append: ' ' | append: wi | append: 'w, ' | append: url_2x | append: ' ' | append: wi | append: 'w' -%}
+    {%- else -%}
+      {%- assign desktop_srcset = desktop_srcset | append: url_1x | append: ' ' | append: wi | append: 'w, ' | append: url_2x | append: ' ' | append: wi | append: 'w, ' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%} Mobile srcset with retina {%- endcomment -%}
+  {%- for w in mobile_array -%}
+    {%- assign wi = w | plus: 0 -%}
+    {%- assign url_1x = image | image_url: width: wi -%}
+    {%- assign url_2x = image | image_url: width: wi | times: 2 -%} 
+
+    {%- if forloop.last -%}
+      {%- assign mobile_srcset = mobile_srcset | append: url_1x | append: ' ' | append: wi | append: 'w, ' | append: url_2x | append: ' ' | append: wi | append: 'w' -%}
+    {%- else -%}
+      {%- assign mobile_srcset = mobile_srcset | append: url_1x | append: ' ' | append: wi | append: 'w, ' | append: url_2x | append: ' ' | append: wi | append: 'w, ' -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- assign final_width = src_width -%}
+  {%- assign final_height = src_width | divided_by: image.aspect_ratio | round -%}
+
+  {%- if lazy_load -%}
+    {%- assign class = 'no-js-hidden motion-reduce ' | append: class -%}
+  {%- endif -%}
+
+  {%- comment -%} Noscript fallback {%- endcomment -%}
+  <noscript>
+    <img
+      src="{{ image | image_url: width: final_width }}"
+      srcset="{{ desktop_srcset }}"
+      sizes="{{ sizes }}"
+      width="{{ final_width }}"
+      height="{{ final_height }}"
+      alt="{{ alt_text | default: image.alt | escape }}"
+      {% if image.presentation and image.presentation.focal_point %}
+        style="object-position: {{ image.presentation.focal_point }}"
+      {% endif %}
+    >
+  </noscript>
+
+  <picture>
+    {%- if mobile_srcset != blank -%}
+      <source srcset="{{ mobile_srcset }}" media="(max-width: 600px)">
+    {%- endif -%}
+
+    <img
+      src="{{ image | image_url: width: final_width }}"
+      srcset="{{ desktop_srcset }}"
+      sizes="{{ sizes }}"
+      width="{{ final_width }}"
+      height="{{ final_height }}"
+      alt="{{ alt_text | default: image.alt | escape }}"
+      loading="{% if lazy_load %}lazy{% else %}eager{% endif %}"
+      {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"{% endif %}
+      class="{{ class }}"
+      {% if attr %}{{ attr }}{% endif %}
+      {% if image.presentation and image.presentation.focal_point %}
+        style="object-position: {{ image.presentation.focal_point }}"
+      {% endif %}
+    >
+  </picture>
+
+  {%- if lazy_load -%}
+    <span class="media-loader no-js-hidden motion-reduce"></span>
+  {%- endif -%}
+
+{%- endif -%}
