@@ -48,3 +48,7 @@ scheme 3 , image banner ( text, heading,bg )
 
 ## v0.4.0
 -- video with text scheme 1, ( text, heading, primary btn)
+
+## v0.5.0
+
+ -- video review section scheme 1 ( text, primary btn )

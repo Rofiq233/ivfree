@@ -354,3 +354,145 @@ if (!customElements.get('custom-video-media')) {
 
 
 // video js end here 
+
+
+
+// video slider js start here 
+
+
+if (!customElements.get('slideshow-swiper')) {
+  customElements.define('slideshow-swiper', class slideshowSwiper extends HTMLElement {
+
+    constructor() {
+      super();
+      this.slider = null;
+      this.boundResize = debounce(() => {
+        if (!this.sliderWrapper) return;
+        if (
+          this.optionsData?.desktopSlider === false &&
+          window.innerWidth >= 768
+        ) {
+          if (this.slider) {
+            this.slider.destroy(true, true);
+            this.slider = null;
+          }
+          return;
+        }
+
+        if (!this.slider) {
+          this.initSlider();
+        } else {
+          this.slider.update();
+        }
+
+      }, 200);
+    }
+
+    connectedCallback() {
+
+      this.sliderWrapper = this.querySelector(".slideshow__swiper");
+
+      if (!this.sliderWrapper) return;
+
+      this.optionsData = this.sliderWrapper.dataset.option
+        ? JSON.parse(this.sliderWrapper.dataset.option)
+        : {};
+
+      this.initSlider();
+
+      window.addEventListener('resize', this.boundResize, {
+        passive: true,
+      });
+    }
+
+    initSlider() {
+
+      if (this.slider?.destroyed === false) return;
+
+      if (
+        this.optionsData?.desktopSlider === false &&
+        window.innerWidth >= 768
+      ) {
+        return;
+      }
+
+      const next = this.querySelector(".arrow-next-button");
+      const prev = this.querySelector(".arrow-prev-button");
+      const pagination = this.querySelector(".swiper-pagination");
+      const scrollbar = this.querySelector(".swiper-scrollbar");
+
+      this.slider = new Swiper(this.sliderWrapper, {
+        effect: "slide",
+        slidesPerView: 1,
+        centeredSlides: false,
+        grabCursor: false,
+        watchSlidesProgress: false,
+        autoHeight: false,
+        observer: false,
+        observeParents: false,
+        resizeObserver: false,
+        updateOnWindowResize: false,
+        loop: false,
+        preloadImages: false,
+        passiveListeners: true,
+        speed: 400,
+        
+
+        scrollbar: {
+          el: scrollbar,
+          draggable: true,
+        },
+         navigation: {
+          nextEl: next,
+          prevEl: prev,
+        },
+
+        ...this.optionsData,
+
+        on: {
+
+          init: (swiper) => {
+            swiper.el.classList.add('swiper-first-load');
+            requestAnimationFrame(() => {
+              swiper.el.classList.remove('swiper-first-load');
+            });
+
+          },
+
+          slideChangeTransitionStart: () => {
+            this.handleSlideChange();
+          }
+
+        }
+
+      });
+
+    }
+
+    handleSlideChange() {
+
+      this.querySelectorAll('video').forEach((video) => {
+        video.pause();
+      });
+
+      this.querySelectorAll('.video-play-pause-button').forEach((btn) => {
+        btn.dataset.playing = 'false';
+      });
+
+    }
+
+    disconnectedCallback() {
+
+      window.removeEventListener('resize', this.boundResize);
+
+      if (this.slider) {
+        this.slider.destroy(true, true);
+        this.slider = null;
+      }
+
+    }
+
+  });
+
+}
+// video slider js end here 

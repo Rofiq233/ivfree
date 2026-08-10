@@ -1,3 +1,20 @@
+
+/* common css start here  */
+
+.section-heading{
+    text-align: center;
+    margin-top: 0 ;
+    margin-bottom: 60px;
+}
+.section-heading h3{
+  margin: 0;
+}
+
+
+
+/* common css end here  */
+
+
 .header_transparent {
 
     display: block;
@@ -332,7 +349,7 @@ position: relative;
 border-radius: var(--media-radius) !important
 ;
 }
-.text-with-video__wrapper .image-with-text__media custom-video-media{
+custom-video-media{
    width: 100%;
    height: 100%;
    display: inline-block;
