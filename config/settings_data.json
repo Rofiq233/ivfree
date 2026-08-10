@@ -12,10 +12,10 @@
     "logo_width": 140,
     "favicon": "shopify://shop_images/favicon-2a-pill-512.png",
     "type_header_font": "archivo_n7",
-    "heading_scale": 110,
+    "heading_scale": 100,
     "type_body_font": "questrial_n4",
     "body_scale": 105,
-    "page_width": 1600,
+    "page_width": 1470,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 28,
     "spacing_grid_vertical": 28,
@@ -181,11 +181,37 @@
           "border_color": "#e3e3e3"
         }
       },
-      "scheme-57e95bd9-734a-4eda-950c-01be62c398b7": {
+      "scheme-2": {
         "settings": {
-          "background": "#1C3A13",
+          "background": "#1c3a13",
           "background_gradient": "",
           "heading": "#14213a",
+          "text": "#ffffff",
+          "primary_button": "#14213a",
+          "primary_button_label": "#faf5ec",
+          "primary_button_hover": "#faf5ec",
+          "primary_button_label_hover": "#14213a",
+          "primary_button_outline": "#14213a",
+          "primary_button_outline_hover": "#14213a",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#14213a",
+          "secondary_button_hover": "#14213a",
+          "secondary_button_label_hover": "#faf5ec",
+          "secondary_button_outline": "#14213a",
+          "secondary_button_outline_hover": "#14213a",
+          "shadow": "#000000",
+          "input_bg_color": "#ffffff",
+          "input_color": "#020714",
+          "input_outline": "#e3e3e3",
+          "placeholder": "#e3e3e3",
+          "border_color": "#e3e3e3"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#2e7d5b",
+          "background_gradient": "",
+          "heading": "#ffffff",
           "text": "#ffffff",
           "primary_button": "#14213a",
           "primary_button_label": "#faf5ec",

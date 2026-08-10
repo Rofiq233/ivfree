@@ -37,3 +37,11 @@ updated button sheme
 hero added and modify
 header modify
 
+## Learned:
+
+
+## v0.3.0
+
+updated font
+
+scheme 3 , image banner ( text, heading,bg )

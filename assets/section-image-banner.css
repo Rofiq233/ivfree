@@ -97,7 +97,7 @@
   }
 
   .banner--medium:not(.banner--adapt) {
-    min-height: 56rem;
+    min-height: 720px;
   }
 
   .banner--large:not(.banner--adapt) {
@@ -387,7 +387,7 @@
   .banner--desktop-transparent .banner__box {
     padding: 4rem 0;
     background: transparent;
-    max-width: 89rem;
+    /* max-width: 89rem; */
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -442,20 +442,6 @@
 @media screen and (max-width: 749px) {
   .banner--stacked .banner__box {
     width: 100%;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .banner__box {
-    width: auto;
-    max-width: 71rem;
-    min-width: 45rem;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .banner__box {
-    max-width: 90rem;
   }
 }
 

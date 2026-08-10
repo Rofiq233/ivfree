@@ -43,6 +43,7 @@
       "settings": {
         "layout": "full_bleed",
         "slide_height": "large",
+        "slide_height_mobile": "large",
         "slider_visual": "counter",
         "auto_rotate": false,
         "change_slides_speed": 5,
@@ -82,46 +83,66 @@
     "image_banner_FU9Kci": {
       "type": "image-banner",
       "blocks": {
+        "subtitle_A6RnAr": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "ViaCap® Technology"
+          }
+        },
+        "right_text_wXqXEr": {
+          "type": "right_text",
+          "settings": {
+            "title": "OUTER CAPSULE",
+            "text": "Shields probiotics from stomach acid in the digestive tract, while delivering prebiotics to stimulate the growth of beneficial bacteria.",
+            "title_right": "INNER CAPSULE",
+            "text_right": "Delivers 24 live strains of probiotics to the colon, where they're needed most."
+          }
+        },
+        "image_C8dKNt": {
+          "type": "Image",
+          "settings": {
+            "img": "shopify://shop_images/viacap-fallback.gif"
+          }
+        },
         "heading_7anJGM": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Most probiotics don't survive digestion—DS-01® does.",
             "heading_size": "h1"
           }
         },
-        "text_4qRQCf": {
-          "type": "text",
+        "box_text_98eYaB": {
+          "type": "Box_text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "text": "<strong>DS-01®</strong> Increases healthy bacteria°",
+            "number": "17"
           }
         },
-        "buttons_dWXgNw": {
-          "type": "buttons",
+        "subtitle_bottom_pJt4kY": {
+          "type": "subtitle_bottom",
           "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "subtitle_bottom": "°Lactobacillus"
           }
         }
       },
       "block_order": [
+        "subtitle_A6RnAr",
+        "right_text_wXqXEr",
+        "image_C8dKNt",
         "heading_7anJGM",
-        "text_4qRQCf",
-        "buttons_dWXgNw"
+        "box_text_98eYaB",
+        "subtitle_bottom_pJt4kY"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
+        "image": "shopify://shop_images/viacapbg.png",
         "image_overlay_opacity": 20,
         "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": true,
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
