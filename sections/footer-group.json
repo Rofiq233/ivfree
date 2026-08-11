@@ -46,6 +46,41 @@
     },
     "footer": {
       "type": "footer",
+      "blocks": {
+        "brand_information_VVVVwb": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        },
+        "link_list_iPHxiY": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop now",
+            "menu": "main-menu"
+          }
+        },
+        "link_list_7a84Dy": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "main-menu"
+          }
+        },
+        "link_list_URhxb4": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "brand_information_VVVVwb",
+        "link_list_iPHxiY",
+        "link_list_7a84Dy",
+        "link_list_URhxb4"
+      ],
       "settings": {
         "color_scheme": "scheme-3",
         "newsletter_enable": false,

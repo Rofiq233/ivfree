@@ -1,0 +1,243 @@
+/* =========================================================
+   CAPSULE SECTION
+========================================================= */
+
+.capsule-thesis {
+  position: relative;
+
+  height: 300vh;
+
+  background: var(--capsule-bg);
+  color: var(--capsule-text);
+}
+
+
+/* =========================================================
+   STICKY
+========================================================= */
+
+.capsule-thesis__sticky {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 70vh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.capsule-thesis__container {
+  width: 100%;
+  max-width: 1440px;
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 80px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.capsule-thesis__content {
+  max-width: 650px;
+}
+
+.capsule-thesis__eyebrow {
+  margin: 0 0 30px;
+
+  font-size: 13px;
+  line-height: 1.2;
+
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
+}
+
+.capsule-thesis__heading {
+  margin: 0;
+
+  font-size: var(--heading-size);
+
+  line-height: 1.08;
+
+  font-weight: 400;
+
+  letter-spacing: -0.025em;
+}
+
+.capsule-thesis__description {
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.capsule-thesis__visual {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+
+/* =========================================================
+   CAPSULE STAGE
+========================================================= */
+
+.capsule-animation {
+  position: relative;
+
+  width: var(--capsule-width);
+
+  /*
+    JS calculates the real height
+    based on SVG sizes.
+  */
+  height: 0;
+
+  margin: 0 auto;
+
+  flex-shrink: 0;
+
+  transform-origin: center center;
+}
+
+
+/* =========================================================
+   SVG PIECES
+========================================================= */
+
+.capsule-piece {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  /*
+    IMPORTANT:
+    JS controls x/y/rotation.
+  */
+  transform: translateX(-50%);
+
+  transform-origin: center center;
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   Z-INDEX
+========================================================= */
+
+.capsule-piece--top {
+  z-index: 4;
+}
+
+.capsule-piece--middle-one {
+  z-index: 3;
+}
+
+.capsule-piece--middle-two {
+  z-index: 2;
+}
+
+.capsule-piece--bottom {
+  z-index: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  .capsule-thesis {
+    height: 250vh;
+  }
+
+
+  .capsule-thesis__container {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+    padding: 40px 24px;
+
+    text-align: center;
+  }
+
+
+  .capsule-thesis__content {
+    max-width: 100%;
+  }
+
+
+  .capsule-thesis__eyebrow {
+    margin-bottom: 15px;
+
+    font-size: 11px;
+  }
+
+
+  .capsule-thesis__heading {
+    font-size: 30px;
+
+    line-height: 1.12;
+  }
+
+
+  .capsule-thesis__visual {
+    height: 50vh;
+
+    overflow: visible;
+  }
+
+
+  .capsule-animation {
+    width: min(190px, 48vw);
+
+    overflow: visible;
+  }
+
+}

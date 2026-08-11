@@ -52,3 +52,6 @@ scheme 3 , image banner ( text, heading,bg )
 ## v0.5.0
 
  -- video review section scheme 1 ( text, primary btn )
+
+ # v0.6.0
+ -- text with animation scheme 1 ( text heaing ) and footer setup

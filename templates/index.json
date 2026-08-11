@@ -213,6 +213,35 @@
         "mobile_padding_bottom": 0
       }
     },
+    "animation_with_text_DhtUA7": {
+      "type": "animation-with-text",
+      "name": "Animation with text",
+      "settings": {
+        "eyebrow": "WHAT IS THESIS?",
+        "heading": "Nootropic formulas that enhance cognitive function to help your brain perform at its best.",
+        "description": "",
+        "background_color": "#ffffff",
+        "text_color": "#19344c",
+        "heading_size": 42,
+        "capsule_width": 260,
+        "top_svg": "shopify://shop_images/svg1.svg",
+        "middle_one_svg": "shopify://shop_images/svg1_8edb89ad-c1d8-42f1-b956-4404871d99c7.svg",
+        "middle_two_svg": "shopify://shop_images/svg1_5b4ad6f6-bfb7-4bd0-bb08-896b74b999e4.svg",
+        "bottom_svg": "shopify://shop_images/svg1_c160b7d8-3396-4a3c-8013-5121782a9a5c.svg",
+        "top_x": 0,
+        "top_y": -60,
+        "top_rotation": 8,
+        "middle_one_x": 0,
+        "middle_one_y": -10,
+        "middle_one_rotation": 8,
+        "middle_two_x": 0,
+        "middle_two_y": 30,
+        "middle_two_rotation": 8,
+        "bottom_x": 0,
+        "bottom_y": 70,
+        "bottom_rotation": 8
+      }
+    },
     "video_review_aW96t6": {
       "type": "video-review",
       "blocks": {
@@ -319,6 +348,7 @@
     "featured-collection-0",
     "image_banner_FU9Kci",
     "text_with_video_RMrUEc",
+    "animation_with_text_DhtUA7",
     "video_review_aW96t6"
   ]
 }
