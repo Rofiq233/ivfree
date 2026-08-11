@@ -58,3 +58,5 @@ scheme 3 , image banner ( text, heading,bg )
  ## v0.7.0
  - ingredients in product page scheme 4 ( bg, primary btn ) card scheme 1 
 
+## v0.8.0
+-- multi card section added scheme 1

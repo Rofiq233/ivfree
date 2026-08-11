@@ -215,11 +215,84 @@
         "text_style": "body",
         "initial_items": 6,
         "show_all_text": "See All",
+        "btn": "Shop now",
+        "button_style": "primary",
         "section_color_scheme": "scheme-aa48a24f-bd90-4b40-81a1-f62f5f44bd41",
+        "card_color_scheme": "",
         "padding_top": 84,
         "padding_bottom": 36,
         "mobile_padding_top": 36,
         "mobile_padding_bottom": 36
+      }
+    },
+    "multicolumn_YTFN8P": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_drrtGU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Vegan_Protein_Blend_-_How_to_use_1-min.png",
+            "title": "",
+            "text": "<p>Scoop: Add 2 heaped tablespoons (30g) to 250-300ml of water or milk alternative.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_GJwjE9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Vegan_Protein_Blend_-_How_to_use_2-min.png",
+            "title": "",
+            "text": "<p>Shake: Shake or blend until smooth.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_GeDABj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Vegan_Protein_Blend_-_How_to_use_3.png",
+            "title": "",
+            "text": "<p>Sip: Enjoy post-workout, in your breakfast smoothie or whenever your body needs a boost.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_87FkBL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Delicious_protein_recipe_-_free_soul_vegan_protein_blend-min.png",
+            "title": "",
+            "text": "<p>Feeling fancy? Add to your oats, yoghurt or baking recipes for a high-protein twist.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_drrtGU",
+        "column_GJwjE9",
+        "column_GeDABj",
+        "column_87FkBL"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "How to use",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50
       }
     }
   },
@@ -227,6 +300,7 @@
     "main",
     "disclosures",
     "related-products",
-    "traceable_ingredients_wbeymh"
+    "traceable_ingredients_wbeymh",
+    "multicolumn_YTFN8P"
   ]
 }

@@ -386,6 +386,22 @@ custom-video-media{
 
 /* text with video css end here  */
 
+
+.multicolumn-list .content-container,
+.multicolumn-card__image-wrapper{
+    border-radius: 5px !important;
+}
+
+
+.multicolumn-card__info .rte{
+    line-height: 130% !important;
+    font-size: 20px;
+}
+
+
+
+
+
 @media(max-width:992px) {
 
     .banner__box-desktop,
