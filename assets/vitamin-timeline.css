@@ -1,0 +1,682 @@
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.vitamin-timeline__heading {
+  width: 48%;
+  margin-bottom: -2px;
+}
+
+
+.vitamin-timeline__heading h2 {
+  margin: 0;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.vitamin-timeline__main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1fr);
+
+  column-gap: 70px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.vitamin-timeline__left {
+  width: 100%;
+}
+
+
+.vitamin-timeline__items {
+  position: relative;
+
+  width: 100%;
+
+  padding-top: 42px;
+  padding-bottom: 10px;
+}
+
+
+/* =========================================================
+   VERTICAL LINE
+========================================================= */
+
+.vitamin-timeline__vertical-line {
+  position: absolute;
+
+  left: 18px;
+
+  top: 64px;
+  bottom: 36px;
+
+  width: 1px;
+
+  background: rgb(var(--color-heading));
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ITEM
+========================================================= */
+
+.vitamin-timeline__item {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+
+  padding: 0;
+  margin: 0 0 31px;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+
+  font-family: inherit;
+}
+
+
+.vitamin-timeline__item:last-child {
+  margin-bottom: 0;
+}
+
+
+.vitamin-timeline__item.is-active {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   DOT
+========================================================= */
+
+.vitamin-timeline__dot {
+  position: relative;
+
+  z-index: 2;
+
+  flex: 0 0 37px;
+
+  width: 37px;
+  height: 37px;
+
+  margin-right: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  transition:
+    background 0.3s ease;
+}
+
+
+.vitamin-timeline__dot > span {
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: rgb(var(--color-heading));
+
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* Active dot */
+
+.vitamin-timeline__item.is-active
+.vitamin-timeline__dot {
+  background: rgb(var(--color-button-text-hover));
+}
+
+
+.vitamin-timeline__item.is-active
+.vitamin-timeline__dot > span {
+  width: 16px;
+  height: 16px;
+
+  background: rgb(var(--color-button-hover));
+}
+
+
+/* =========================================================
+   ITEM CONTENT
+========================================================= */
+
+.vitamin-timeline__item-content {
+  flex: 1;
+
+  display: block;
+
+  min-width: 0;
+  opacity: 0.43;
+}
+.is-active .vitamin-timeline__item-content {
+  opacity: 1;
+}
+
+
+
+
+.vitamin-timeline__title {
+  display: block;
+
+  margin-bottom: 17px;
+
+  color: rgb(var(--color-heading));
+
+  font-size: 29px;
+  line-height: 1.15;
+
+  font-weight: 500;
+
+  letter-spacing: -0.6px;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.vitamin-timeline__features {
+  display: block;
+}
+
+
+.vitamin-timeline__feature {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+
+  color: rgb(var(--color-heading));
+
+  font-size: 16px;
+  line-height: 1.45;
+
+  font-weight: 400;
+}
+
+
+.vitamin-timeline__feature:last-child {
+  margin-bottom: 0;
+}
+
+
+.vitamin-timeline__check {
+  flex: 0 0 auto;
+
+  display: inline-block;
+
+  font-size: 16px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.vitamin-timeline__right {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   SWIPER
+========================================================= */
+
+.vitamin-timeline__slider {
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+}
+
+
+.vitamin-timeline__slider .swiper-slide {
+  width: 100%;
+}
+
+
+.vitamin-timeline__image {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1.55 / 1;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #ddd;
+}
+
+
+.vitamin-timeline__image-img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.vitamin-timeline__image--placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.vitamin-timeline__pagination {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 24px;
+}
+
+
+.vitamin-timeline__pagination-dot {
+  width: 10px;
+  height: 10px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: rgb(var(--color-heading));
+
+  opacity: 0.25;
+
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+}
+
+
+.vitamin-timeline__pagination-dot.is-active {
+  opacity: 1;
+    background: rgb(var(--color-button-hover));
+}
+
+
+/* =========================================================
+   MOBILE CONTENT
+========================================================= */
+
+.vitamin-timeline__mobile-content {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 1100px) {
+
+  .vitamin-timeline {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+
+  .vitamin-timeline__main {
+    column-gap: 45px;
+  }
+
+
+  .vitamin-timeline__heading h2 {
+    font-size: 32px;
+  }
+
+
+  .vitamin-timeline__title {
+    font-size: 26px;
+  }
+
+
+  .vitamin-timeline__feature {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  .vitamin-timeline {
+    padding: 43px 15px 55px;
+  }
+
+
+  /* -----------------------------------------
+     HEADING
+  ------------------------------------------ */
+
+  .vitamin-timeline__heading {
+    width: 100%;
+
+    margin-bottom: 33px;
+  }
+
+
+  .vitamin-timeline__heading h2 {
+    max-width: 360px;
+
+    font-size: 27px;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.8px;
+  }
+
+
+  /* -----------------------------------------
+     MAIN
+  ------------------------------------------ */
+
+  .vitamin-timeline__main {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+  }
+
+
+  /* -----------------------------------------
+     IMAGE FIRST
+  ------------------------------------------ */
+
+  .vitamin-timeline__right {
+    order: 1;
+
+    width: 100%;
+  }
+
+
+  .vitamin-timeline__left {
+    order: 2;
+
+    width: 100%;
+  }
+
+
+  /* -----------------------------------------
+     IMAGE
+  ------------------------------------------ */
+
+  .vitamin-timeline__image {
+    aspect-ratio: 1.38 / 1;
+
+    border-radius: 7px;
+  }
+
+
+  /* -----------------------------------------
+     HIDE DESKTOP CONTENT
+  ------------------------------------------ */
+
+  .vitamin-timeline__left
+  .vitamin-timeline__features {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     TIMELINE
+  ------------------------------------------ */
+
+  .vitamin-timeline__items {
+
+    display: flex;
+
+    width: 100%;
+
+    padding: 0;
+
+    margin-top: 36px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  .vitamin-timeline__items::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     HORIZONTAL LINE
+  ------------------------------------------ */
+
+  .vitamin-timeline__vertical-line {
+
+    left: 10px;
+    right: 10px;
+
+    top: 17px;
+    bottom: auto;
+
+    width: auto;
+
+    height: 1px;
+
+    background: #cfcfcf;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE TAB
+  ------------------------------------------ */
+
+  .vitamin-timeline__item {
+
+    flex: 0 0 33.3333%;
+
+    width: 33.3333%;
+
+    display: block;
+
+    margin: 0;
+
+    padding: 0;
+
+    text-align: center;
+  }
+
+
+  /* -----------------------------------------
+     DOT
+  ------------------------------------------ */
+
+  .vitamin-timeline__dot {
+
+    width: 36px;
+    height: 36px;
+
+    margin: 0 auto 12px;
+  }
+
+
+  .vitamin-timeline__dot > span {
+
+    width: 8px;
+    height: 8px;
+  }
+
+
+  .vitamin-timeline__item.is-active
+  .vitamin-timeline__dot > span {
+
+    width: 16px;
+    height: 16px;
+  }
+
+
+  /* -----------------------------------------
+     TITLE
+  ------------------------------------------ */
+
+  .vitamin-timeline__item-content {
+    display: block;
+  }
+
+
+  .vitamin-timeline__title {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    line-height: 1.2;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+  }
+
+
+  /* -----------------------------------------
+     PAGINATION HIDE
+  ------------------------------------------ */
+
+  .vitamin-timeline__pagination {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE ACTIVE CONTENT
+  ------------------------------------------ */
+
+  .vitamin-timeline__mobile-content {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 23px;
+  }
+
+
+  .vitamin-timeline__mobile-content-item {
+    display: none;
+  }
+
+
+  .vitamin-timeline__mobile-content-item.is-active {
+    display: block;
+  }
+
+
+  .vitamin-timeline__mobile-content
+  .vitamin-timeline__feature {
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+
+    line-height: 1.45;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 390px) {
+
+  .vitamin-timeline {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
+  .vitamin-timeline__heading h2 {
+    font-size: 26px;
+  }
+
+
+  .vitamin-timeline__title {
+    font-size: 18px;
+  }
+
+
+  .vitamin-timeline__mobile-content
+  .vitamin-timeline__feature {
+    font-size: 14px;
+  }
+
+}

@@ -1,0 +1,460 @@
+{{ 'vitamin-timeline.css' | asset_url | stylesheet_tag }}
+
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign s = section.settings 
+-%}
+
+<div
+  id="vitamin-timeline-{{ section.id }}"
+  class="vitamin-timeline-section gradient color-{{ s.section_color_scheme }} section-{{ section.id }}-padding"
+>
+  <div class="vitamin-timeline page-width">
+
+
+    <div class="vitamin-timeline__heading">
+      {% if s.heading != blank %}
+        <h2 class="{{ s.heading_size }}">
+          {{ s.heading }}
+        </h2>
+      {% endif %}
+    </div>
+
+
+    <div class="vitamin-timeline__main">
+
+      <!-- =======================================
+           LEFT SIDE
+      ======================================== -->
+
+      <div class="vitamin-timeline__left">
+
+        <div class="vitamin-timeline__items">
+
+          <!-- Vertical Line -->
+          <span class="vitamin-timeline__vertical-line"></span>
+
+
+          {% for block in section.blocks %}
+
+            <button
+              type="button"
+              class="
+                vitamin-timeline__item
+                {% if forloop.first %}is-active{% endif %}
+              "
+              data-index="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}
+            >
+
+              <!-- Dot -->
+
+              <span class="vitamin-timeline__dot">
+                <span></span>
+              </span>
+
+
+              <!-- Content -->
+
+              <span class="vitamin-timeline__item-content">
+
+                {% if block.settings.title != blank %}
+                  <span class="vitamin-timeline__title">
+                    {{ block.settings.title }}
+                  </span>
+                {% endif %}
+
+
+                <span class="vitamin-timeline__features">
+
+                  {% if block.settings.feature_1 != blank %}
+                    <span class="vitamin-timeline__feature">
+                      <span class="vitamin-timeline__check">
+                        ✓
+                      </span>
+
+                      <span>
+                        {{ block.settings.feature_1 }}
+                      </span>
+                    </span>
+                  {% endif %}
+
+
+                  {% if block.settings.feature_2 != blank %}
+                    <span class="vitamin-timeline__feature">
+                      <span class="vitamin-timeline__check">
+                        ✓
+                      </span>
+
+                      <span>
+                        {{ block.settings.feature_2 }}
+                      </span>
+                    </span>
+                  {% endif %}
+
+
+                  {% if block.settings.feature_3 != blank %}
+                    <span class="vitamin-timeline__feature">
+                      <span class="vitamin-timeline__check">
+                        ✓
+                      </span>
+
+                      <span>
+                        {{ block.settings.feature_3 }}
+                      </span>
+                    </span>
+                  {% endif %}
+
+                </span>
+
+              </span>
+
+            </button>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =======================================
+           RIGHT SIDE
+      ======================================== -->
+
+      <div class="vitamin-timeline__right">
+
+        <div class="vitamin-timeline__slider swiper">
+
+          <div class="swiper-wrapper">
+
+            {% for block in section.blocks %}
+
+              <div
+                class="swiper-slide"
+                data-slide-index="{{ forloop.index0 }}"
+              >
+
+                {% if block.settings.image != blank %}
+
+                  <div class="vitamin-timeline__image">
+
+                    {{
+                      block.settings.image
+                      | image_url: width: 1800
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '400, 600, 800, 1000, 1200, 1600, 1800',
+                        sizes: '(min-width: 990px) 55vw, 100vw',
+                        class: 'vitamin-timeline__image-img'
+                    }}
+
+                  </div>
+
+                {% else %}
+
+                  <div class="vitamin-timeline__image vitamin-timeline__image--placeholder">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+
+                {% endif %}
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+
+        <!-- =====================================
+             DESKTOP PAGINATION
+        ====================================== -->
+
+        <div class="vitamin-timeline__pagination">
+
+          {% for block in section.blocks %}
+
+            <button
+              type="button"
+              class="
+                vitamin-timeline__pagination-dot
+                {% if forloop.first %}is-active{% endif %}
+              "
+              data-pagination-index="{{ forloop.index0 }}"
+              aria-label="Go to {{ block.settings.title }}"
+            ></button>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MOBILE ACTIVE CONTENT
+    ========================================== -->
+
+    <div class="vitamin-timeline__mobile-content">
+
+      {% for block in section.blocks %}
+
+        <div
+          class="
+            vitamin-timeline__mobile-content-item
+            {% if forloop.first %}is-active{% endif %}
+          "
+          data-mobile-content="{{ forloop.index0 }}"
+        >
+
+          {% if block.settings.feature_1 != blank %}
+            <div class="vitamin-timeline__feature">
+              <span class="vitamin-timeline__check">✓</span>
+              <span>{{ block.settings.feature_1 }}</span>
+            </div>
+          {% endif %}
+
+
+          {% if block.settings.feature_2 != blank %}
+            <div class="vitamin-timeline__feature">
+              <span class="vitamin-timeline__check">✓</span>
+              <span>{{ block.settings.feature_2 }}</span>
+            </div>
+          {% endif %}
+
+
+          {% if block.settings.feature_3 != blank %}
+            <div class="vitamin-timeline__feature">
+              <span class="vitamin-timeline__check">✓</span>
+              <span>{{ block.settings.feature_3 }}</span>
+            </div>
+          {% endif %}
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  window.VitaminTimelineConfig = window.VitaminTimelineConfig || {};
+
+  window.VitaminTimelineConfig['{{ section.id }}'] = {
+    sectionId: '{{ section.id }}'
+  };
+</script>
+
+<script src="{{ 'vitamin-timeline.js' | asset_url }}" defer></script>
+
+
+
+
+
+
+
+{% schema %}
+ {
+  "name": "Interactive Timeline",
+  "tag": "section",
+  "class": "section-vitamin-timeline",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How Vitamin D3+K2 Transforms Your Wellness Over Time."
+    },
+    {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+     {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    },
+  {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            }
+  ],
+
+  "blocks": [
+    {
+      "type": "timeline_item",
+      "name": "Timeline Item",
+
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Month 1"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "Feature 1",
+          "default": "More consistent energy and mood."
+        },
+
+        {
+          "type": "text",
+          "id": "feature_2",
+          "label": "Feature 2",
+          "default": "Fewer aches, better muscle recovery."
+        },
+
+        {
+          "type": "text",
+          "id": "feature_3",
+          "label": "Feature 3",
+          "default": "Stronger immune responsiveness."
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Interactive Timeline",
+
+      "blocks": [
+        {
+          "type": "timeline_item",
+          "settings": {
+            "title": "Month 1",
+            "feature_1": "More consistent energy and mood.",
+            "feature_2": "Fewer aches, better muscle recovery.",
+            "feature_3": "Stronger immune responsiveness."
+          }
+        },
+
+        {
+          "type": "timeline_item",
+          "settings": {
+            "title": "Month 2",
+            "feature_1": "Noticeably stronger bones and joints.",
+            "feature_2": "Improved physical stability and balance.",
+            "feature_3": "More resilient stress and mood response."
+          }
+        },
+
+        {
+          "type": "timeline_item",
+          "settings": {
+            "title": "Month 3",
+            "feature_1": "Long-term bone strength confidence.",
+            "feature_2": "Improved cardiovascular peace of mind.",
+            "feature_3": "Feeling supported as you age."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

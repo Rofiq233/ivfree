@@ -60,3 +60,5 @@ scheme 3 , image banner ( text, heading,bg )
 
 ## v0.8.0
 -- multi card section added scheme 1
+## v0.9.0
+ -- Interactive Timeline section added scheme 4 ( text, heading , bg, primary btn hover bg, hover text)

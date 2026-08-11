@@ -294,6 +294,55 @@
         "mobile_padding_top": 50,
         "mobile_padding_bottom": 50
       }
+    },
+    "interactive_timeline_ETB3ma": {
+      "type": "interactive-timeline",
+      "blocks": {
+        "timeline_item_YrmV7B": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "Month 1",
+            "image": "shopify://shop_images/coq10.png",
+            "feature_1": "More consistent energy and mood.",
+            "feature_2": "Fewer aches, better muscle recovery.",
+            "feature_3": "Stronger immune responsiveness."
+          }
+        },
+        "timeline_item_7UyDTU": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "Month 2",
+            "image": "shopify://shop_images/vd_1-howitworks.png",
+            "feature_1": "Noticeably stronger bones and joints.",
+            "feature_2": "Improved physical stability and balance.",
+            "feature_3": "More resilient stress and mood response."
+          }
+        },
+        "timeline_item_DPnWww": {
+          "type": "timeline_item",
+          "settings": {
+            "title": "Month 3",
+            "feature_1": "Long-term bone strength confidence.",
+            "feature_2": "Improved cardiovascular peace of mind.",
+            "feature_3": "Feeling supported as you age."
+          }
+        }
+      },
+      "block_order": [
+        "timeline_item_YrmV7B",
+        "timeline_item_7UyDTU",
+        "timeline_item_DPnWww"
+      ],
+      "name": "Interactive Timeline",
+      "settings": {
+        "heading": "How Vitamin D3+K2 Transforms Your Wellness Over Time.",
+        "heading_size": "h1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50,
+        "section_color_scheme": "scheme-aa48a24f-bd90-4b40-81a1-f62f5f44bd41"
+      }
     }
   },
   "order": [
@@ -301,6 +350,7 @@
     "disclosures",
     "related-products",
     "traceable_ingredients_wbeymh",
-    "multicolumn_YTFN8P"
+    "multicolumn_YTFN8P",
+    "interactive_timeline_ETB3ma"
   ]
 }
