@@ -179,7 +179,7 @@
           "input_color": "#020714",
           "input_outline": "#e3e3e3",
           "placeholder": "#e3e3e3",
-          "border_color": "#e3e3e3"
+          "border_color": "#14213A"
         }
       },
       "scheme-2": {
@@ -236,7 +236,7 @@
       },
       "scheme-aa48a24f-bd90-4b40-81a1-f62f5f44bd41": {
         "settings": {
-          "background": "#EDE6D8",
+          "background": "#ede6d8",
           "background_gradient": "",
           "heading": "#14213a",
           "text": "#14213a",

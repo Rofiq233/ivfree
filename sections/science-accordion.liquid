@@ -1,0 +1,406 @@
+{{ 'content-science-accordion.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+{%- liquid
+  assign s = section.settings 
+-%}
+<div class="content-science-accordion gradient color-{{ s.section_color_scheme }} section-{{ section.id }}-padding"
+  id="ContentScienceAccordion-{{ section.id }}">
+  <div class="content-science-accordion__container page-width">
+
+    <div class="content-science-accordion__grid">
+
+      <div class="content-science-accordion__content">
+
+        {% if s.eyebrow != blank %}
+          <div class="content-science-accordion__eyebrow">
+            {{ s.eyebrow }}
+          </div>
+        {% endif %}
+
+        {% if s.heading != blank %}
+          <h2 class="content-science-accordion__heading {{ s.heading_size }}
+">
+            {{ s.heading }}
+          </h2>
+        {% endif %}
+
+        {% if s.description != blank %}
+          <div class="content-science-accordion__description">
+            {{ s.description }}
+          </div>
+        {% endif %}
+
+
+        {% if section.blocks.size > 0 %}
+          <div class="content-science-accordion__accordion">
+
+            {% for block in section.blocks %}
+
+              <div
+                class="content-science-accordion__item {% if forloop.first and section.settings.open_first %}is-active{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+
+                <button
+                  type="button"
+                  class="content-science-accordion__trigger"
+                  aria-expanded="{% if forloop.first and section.settings.open_first %}true{% else %}false{% endif %}"
+                >
+
+                  <span class="content-science-accordion__title">
+                    {{ block.settings.title }}
+                  </span>
+
+                  <span class="content-science-accordion__icon">
+                    <span></span>
+                    <span></span>
+                  </span>
+
+                </button>
+
+                <div class="content-science-accordion__answer">
+
+                  <div class="content-science-accordion__answer-inner">
+                    {{ block.settings.content }}
+                  </div>
+
+                </div>
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+        {% endif %}
+
+      </div>
+
+
+      <!-- RIGHT VISUAL -->
+      <div class="content-science-accordion__visual">
+
+        <div class="content-science-accordion__visual-card">
+
+          <!-- TOP HIGHLIGHT -->
+           <div class="content-science-top-wrap">
+
+               <div class="content-science-accordion__highlight-icon">
+                   <svg
+                   viewBox="0 0 24 24"
+                   aria-hidden="true"
+                   >
+                   <path d="M12 19V5"></path>
+                   <path d="M6 11l6-6 6 6"></path>
+                   </svg>
+                   </div>
+                   
+                   <div class="content-science-accordion__highlight-content">
+                       {% if section.settings.highlight_value != blank
+                         or section.settings.highlight_text != blank
+                       %}
+                         <div class="content-science-accordion__highlight">
+             
+                           {% if section.settings.highlight_value != blank %}
+                             <div class="content-science-accordion__highlight-value">
+                               {{ section.settings.highlight_value }}
+                             </div>
+                           {% endif %}
+     
+     
+                     {% if section.settings.highlight_text != blank %}
+                       <div class="content-science-accordion__highlight-text">
+                         {{ section.settings.highlight_text }}
+                       </div>
+                     {% endif %}
+     
+                   </div>
+     
+                 </div>
+               {% endif %}
+           </div>
+
+
+          <!-- MAIN IMAGE -->
+          {% if section.settings.image != blank %}
+            <div class="content-science-accordion__image">
+
+              {{
+                section.settings.image
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200',
+                  sizes: '(min-width: 990px) 420px, 100vw',
+                  class: 'content-science-accordion__image-img',
+                  alt: section.settings.image.alt
+              }}
+
+            </div>
+          {% endif %}
+
+
+          <!-- SOURCE -->
+          {% if section.settings.source != blank %}
+            <div class="content-science-accordion__source">
+              {{ section.settings.source }}
+            </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ 'content-science-accordion.js' | asset_url }}" defer></script>
+
+
+
+{% schema %}
+{
+  "name": "Science Accordion",
+  "tag": "section",
+  "class": "section-content-science-accordion",
+
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Content"
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Science Behind Our Formula"
+    },
+
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Results That Actually Deliver"
+    },
+{
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Explain the main benefit, technology or science behind your product in a clear and convincing way.</p>"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first accordion item",
+      "default": true
+    },
+
+
+    {
+      "type": "header",
+      "content": "Visual Content"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Highlight Card"
+    },
+
+    {
+      "type": "text",
+      "id": "highlight_value",
+      "label": "Highlight value",
+      "default": "1.9x"
+    },
+
+    {
+      "type": "textarea",
+      "id": "highlight_text",
+      "label": "Highlight text",
+      "default": "Increase in absorption. One capsule. More power than two."
+    },
+
+
+    {
+      "type": "header",
+      "content": "Reference"
+    },
+
+    {
+      "type": "richtext",
+      "id": "source",
+      "label": "Source / Reference",
+      "default": "<p>Clinical study and supporting research reference.</p>"
+    },
+
+           {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+
+            {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+  ],
+
+  "blocks": [
+
+    {
+      "type": "accordion",
+      "name": "Accordion item",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Daily Use Guidelines"
+        },
+
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Add detailed information, instructions, benefits or supporting information here.</p>"
+        }
+
+      ]
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Science Accordion",
+
+      "blocks": [
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Daily Use Guidelines"
+          }
+        },
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "How It Works"
+          }
+        },
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "Why It Matters"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
