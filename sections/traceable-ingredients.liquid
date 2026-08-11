@@ -1,0 +1,426 @@
+
+
+
+
+
+{{ 'traceable-ingredients.css' |  asset_url |  stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+{%- liquid
+  assign s = section.settings 
+-%}
+<div
+  class="traceable-ingredients gradient color-{{ s.section_color_scheme }} section-{{ section.id }}-padding"
+  id="TraceableIngredients-{{ section.id }}"
+>
+  <div class="page-width">
+
+    <div class="traceable-ingredients__header">
+
+      {% if s.heading != blank %}
+        <h2 class="traceable-ingredients__heading {{ s.heading_size }}">
+          {{ s.heading }}
+        </h2>
+      {% endif %}
+
+      {% if s.description != blank %}
+        <div class="traceable-ingredients__description ">
+          <p class="rte {{ s.text_style }}">{{ s.description }}</p>
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="traceable-ingredients__grid ">
+
+      {% for block in section.blocks %}
+
+        <div
+          class="
+            traceable-ingredient-card gradient color-{{ s.card_color_scheme }}
+            {% if forloop.index > section.settings.initial_items %}
+              traceable-ingredient-card--hidden
+            {% endif %}
+          "
+          data-ingredient-card
+          {{ block.shopify_attributes }}
+        >
+
+          {% if block.settings.image != blank %}
+            <div class="traceable-ingredient-card__image">
+
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '300, 500, 800',
+                  sizes: '(min-width: 750px) 33vw, 100vw',
+                  alt: block.settings.title
+              }}
+
+            </div>
+          {% endif %}
+
+
+          <div class="traceable-ingredient-card__content">
+
+            {% if block.settings.title != blank %}
+              <h3 class="traceable-ingredient-card__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+
+
+            {% if block.settings.subtitle != blank %}
+              <p class="traceable-ingredient-card__subtitle">
+                {{ block.settings.subtitle }}
+              </p>
+            {% endif %}
+
+
+            {% if block.settings.location != blank %}
+              <p class="traceable-ingredient-card__location">
+                {{ block.settings.location }}
+              </p>
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+
+    {%- comment -%}
+      ==========================
+      SHOW ALL / SHOW LESS
+      ==========================
+    {%- endcomment -%}
+
+    {% if section.blocks.size > section.settings.initial_items %}
+
+      <div class="traceable-ingredients__button-wrapper">
+
+        <button
+          type="button"
+          class="traceable-ingredients__toggle {{ s.button_style }}"
+          data-ingredients-toggle
+          aria-expanded="false"
+        >
+
+          <span
+            class="traceable-ingredients__toggle-text"
+            data-toggle-text
+          >
+            {{ section.settings.show_all_text }}
+          </span>
+
+          <span
+            class="traceable-ingredients__arrow"
+            data-toggle-arrow
+            aria-hidden="true"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 7L9 12L14 7"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+
+        </button>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+  </div>
+
+{{ 'traceable-ingredients.js' |  asset_url |  script_tag }}
+
+{% schema %}
+{
+  "name": "Traceable Ingredients",
+  "tag": "section",
+  "class": "section-traceable-ingredients",
+
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Traceable Ingredients"
+    },
+{
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "Ritual products are Made Traceable®, and our visible supply chain tells you what you're putting into your body, where it comes from, and why."
+    },
+{
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__2.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
+        },
+    {
+      "type": "header",
+      "content": "Display"
+    },
+
+    {
+      "type": "range",
+      "id": "initial_items",
+      "label": "Initial Items",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+
+    {
+      "type": "text",
+      "id": "show_all_text",
+      "label": "Show All Text",
+      "default": "See All"
+    },
+    {
+        "type": "text",
+        "id": "btn",
+        "label": "Button text",
+         "default":"Shop now"
+       },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "secondary-outline",
+              "label": "Secondary Outline"
+            }
+          ]
+        },
+     {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+            {
+              "type": "color_scheme",
+              "id": "card_color_scheme",
+              "label": "Scheme card"
+            },
+     {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+  ],
+
+  "blocks": [
+
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+
+      "settings": [
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ingredient Image"
+        },
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Folate"
+        },
+
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Methylated Folate"
+        },
+
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Pisticci, Italy"
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "presets": [
+
+    {
+      "name": "Traceable Ingredients",
+
+      "blocks": [
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        },
+        {
+          "type": "ingredient"
+        }
+      ]
+    }
+
+  ]
+
+}
+{% endschema %}
