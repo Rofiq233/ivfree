@@ -89,19 +89,102 @@
         "padding_bottom": 60
       }
     },
-    "disclosures": {
-      "type": "disclosures",
+    "logo_marquee_GRYwGG": {
+      "type": "logo-marquee",
+      "blocks": {
+        "logo_xK7nGG": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323651.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_pCJTzM": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323651.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_kNQQdQ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323653.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_AL4QKr": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323651.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_mXAmFh": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323653.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_KDDUah": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323651.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_jAAtEi": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323651.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_zyN9Qx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Group_1321323653.png",
+            "link": "",
+            "open_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_xK7nGG",
+        "logo_pCJTzM",
+        "logo_kNQQdQ",
+        "logo_AL4QKr",
+        "logo_mXAmFh",
+        "logo_KDDUah",
+        "logo_jAAtEi",
+        "logo_zyN9Qx"
+      ],
+      "name": "Logo Marquee",
       "settings": {
-        "heading": "Disclosures",
-        "heading_size": "h2",
-        "open_by_default": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 0
+        "heading": "",
+        "background_color": "#FFFFFF",
+        "logo_height": 56,
+        "logo_width": 160,
+        "logo_gap": 4,
+        "marquee_speed": 55,
+        "direction": "left",
+        "pause_on_hover": true,
+        "mobile_enable": true,
+        "section_padding_top": 10,
+        "section_padding_bottom": 10
       }
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -395,7 +478,7 @@
   },
   "order": [
     "main",
-    "disclosures",
+    "logo_marquee_GRYwGG",
     "related-products",
     "traceable_ingredients_wbeymh",
     "multicolumn_YTFN8P",

@@ -66,3 +66,6 @@ scheme 3 , image banner ( text, heading,bg )
 
  ## v0.10.0
  -- science section added scheme 1 ( bg, text, heading,border )
+
+ ## v0.11.0
+ logo marquee section added 
