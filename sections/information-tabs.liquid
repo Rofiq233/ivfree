@@ -1,0 +1,269 @@
+{{ 'information-tabs.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div
+  class="information-tabs gradient color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding"
+  id="InformationTabs-{{ section.id }}"
+>
+  <div class="information-tabs__container page-width">
+
+    {% if section.settings.heading != blank %}
+      <div class="information-tabs__heading {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+
+      <div
+        class="information-tabs__nav"
+        role="tablist"
+        aria-label="{{ section.settings.heading | escape }}"
+      >
+
+        {% for block in section.blocks %}
+
+          <button
+            type="button"
+            class="information-tabs__tab{% if forloop.first %} is-active{% endif %}"
+            id="InformationTab-{{ section.id }}-{{ block.id }}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="InformationPanel-{{ section.id }}-{{ block.id }}"
+            data-tab-id="{{ block.id }}"
+            {{ block.shopify_attributes }}
+          >
+
+            {% if block.settings.tab_title != blank %}
+              {{ block.settings.tab_title }}
+            {% endif %}
+
+          </button>
+
+        {% endfor %}
+
+      </div>
+
+      <div class="information-tabs__content">
+
+        {% for block in section.blocks %}
+
+          <div
+            class="information-tabs__panel{% if forloop.first %} is-active{% endif %}"
+            id="InformationPanel-{{ section.id }}-{{ block.id }}"
+            role="tabpanel"
+            aria-labelledby="InformationTab-{{ section.id }}-{{ block.id }}"
+            data-panel-id="{{ block.id }}"
+            {% unless forloop.first %}
+              hidden
+            {% endunless %}
+          >
+
+            {% if block.settings.image != blank %}
+
+              <div class="information-tabs__image">
+
+                {{
+                  block.settings.image
+                  | image_url: width: 2400
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '550, 750, 1100, 1500, 2000, 2400',
+                    sizes: '100vw',
+                    alt: block.settings.image.alt
+                }}
+
+              </div>
+
+            {% else %}
+
+              <div class="information-tabs__placeholder">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+
+            {% endif %}
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    {% endif %}
+
+  </div>
+</div>
+
+<script src="{{ 'information-tabs.js' | asset_url }}" defer></script>
+
+
+{% schema %}
+
+{
+  "name": "Information Tabs",
+
+  "tag": "section",
+
+  "class": "section-information-tabs",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything You Need To Know"
+    },
+     {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+  ],
+
+  "blocks": [
+    {
+      "type": "tab",
+
+      "name": "Tab",
+
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab title",
+          "default": "Why We Age"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Information Tabs",
+
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Why We Age"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "NMN restores NAD+"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Why Indians Age Earlier"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Wellspan: Optimised living"
+          }
+        }
+      ]
+    }
+  ]
+
+}
+
+{% endschema %}

@@ -14,67 +14,64 @@
   ],
   "sections": {
     "featured-collection-0": {
+      "type": "featured-collection",
       "settings": {
         "collection": "all",
-        "color_scheme": "scheme-1",
-        "columns_desktop": 4,
-        "columns_mobile": "2",
+        "products_to_show": 4,
+        "title": "Featured products",
+        "heading_size": "h2",
         "description": "",
+        "show_description": false,
         "description_style": "body",
+        "columns_desktop": 4,
         "enable_desktop_slider": false,
         "full_width": false,
-        "heading_size": "h2",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
         "image_ratio": "portrait",
         "image_shape": "default",
-        "padding_bottom": 60,
-        "padding_top": 60,
-        "products_to_show": 4,
-        "quick_add": "standard",
-        "show_description": false,
-        "show_rating": false,
         "show_secondary_image": false,
         "show_vendor": false,
-        "show_view_all": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "title": "Featured products",
-        "view_all_style": "solid"
-      },
-      "type": "featured-collection"
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "slide",
+          "settings": {
+            "image_overlay_opacity": 10,
+            "heading": "Browse our latest products",
+            "heading_size": "h1",
+            "subheading": "",
+            "show_text_box": true,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-2"
+          }
+        }
+      },
       "block_order": [
         "slide-0"
       ],
-      "blocks": {
-        "slide-0": {
-          "settings": {
-            "box_align": "middle-left",
-            "button_label": "Shop all",
-            "button_style_secondary": false,
-            "color_scheme": "scheme-2",
-            "heading": "Browse our latest products",
-            "heading_size": "h1",
-            "image_overlay_opacity": 10,
-            "link": "shopify://collections/all",
-            "show_text_box": true,
-            "subheading": "",
-            "text_alignment": "left",
-            "text_alignment_mobile": "left"
-          },
-          "type": "slide"
-        }
-      },
       "settings": {
-        "accessibility_info": "Slideshow about our brand",
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "image_behavior": "none",
-        "layout": "full_bleed",
         "show_text_below": true,
-        "slide_height": "adapt_image",
-        "slider_visual": "counter"
-      },
-      "type": "slideshow"
+        "accessibility_info": "Slideshow about our brand"
+      }
     }
   }
 }

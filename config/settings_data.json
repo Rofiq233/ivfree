@@ -179,7 +179,7 @@
           "input_color": "#020714",
           "input_outline": "#e3e3e3",
           "placeholder": "#e3e3e3",
-          "border_color": "#14213A"
+          "border_color": "#14213a"
         }
       },
       "scheme-2": {
@@ -257,7 +257,7 @@
           "input_color": "#020714",
           "input_outline": "#e3e3e3",
           "placeholder": "#e3e3e3",
-          "border_color": "#e3e3e3"
+          "border_color": "#FFFFFF"
         }
       }
     }

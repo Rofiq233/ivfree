@@ -1,0 +1,815 @@
+/* =========================================================
+   SUPPLEMENT FACTS
+========================================================= */
+
+.supplement-facts {
+    position: relative;
+    width: 100%;
+    min-height: var(--sf-desktop-height);
+
+    padding: 30px 26px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.supplement-facts__background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: block !important;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.supplement-facts__inner {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1308px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.supplement-facts__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 32px;
+}
+
+
+.supplement-facts__serving {
+    color: rgb(var(--color-foreground));
+
+    font-size: 18px;
+    line-height: 1.4;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.supplement-facts__content {
+    display: grid;
+
+    grid-template-columns: 1.4fr 1fr;
+
+    gap: 10px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
+.sf-card {
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: rgb(var(--color-button), 0.42);
+
+    border: 1px solid rgb(var(--color-foreground), 0.05);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   INGREDIENTS CARD
+========================================================= */
+
+.sf-card--ingredients {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   INGREDIENT HEADER
+========================================================= */
+
+.sf-card__header {
+    min-height: 50px;
+
+    background: rgb(var(--color-button), 0.30);
+
+    border-bottom: 1px solid rgb(var(--color-foreground), 0.10);
+}
+
+
+.sf-card__header--ingredients {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    width: 100%;
+}
+
+
+.sf-card__header--ingredients>div {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+    min-height: 50px;
+
+    padding: 0 28px;
+
+    box-sizing: border-box;
+
+    color: rgb(var(--color-foreground));
+
+    font-size: 15px;
+    line-height: 1.2;
+
+    font-weight: 600;
+}
+
+
+.sf-card__header--ingredients>div:first-child {
+    border-right: 1px solid rgb(var(--color-foreground), 0.10);
+}
+
+
+.sf-card__header--ingredients>div:last-child {
+    border-left: 0;
+}
+
+
+/* =========================================================
+   INGREDIENT LIST
+========================================================= */
+
+.sf-ingredients-list {
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   INGREDIENT ROW
+========================================================= */
+
+.sf-ingredient {
+    display: grid;
+
+    /*
+    MUST MATCH HEADER
+  */
+    grid-template-columns: 60% 40%;
+
+    width: 100%;
+
+    min-height: 45px;
+
+    margin: 0;
+    padding: 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-sizing: border-box;
+}
+
+
+.sf-ingredient:last-child {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   INGREDIENT NAME
+========================================================= */
+
+.sf-ingredient__name {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    padding: 9px 28px;
+
+    box-sizing: border-box;
+
+    color: rgb(var(--color-foreground));
+
+    font-size: 17px;
+
+    line-height: 1.35;
+
+    border-right: 1px solid rgb(var(--color-foreground), 0.10);
+}
+
+
+/* =========================================================
+   INGREDIENT AMOUNT
+========================================================= */
+
+.sf-ingredient__amount {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    padding: 9px 28px;
+
+    box-sizing: border-box;
+
+    color: rgb(var(--color-foreground));
+
+    font-size: 16px;
+
+    line-height: 1.35;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   RIGHT CARD
+========================================================= */
+
+.sf-card--right {
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   RIGHT HEADER
+========================================================= */
+
+.sf-card__header--single {
+    display: flex;
+
+    align-items: center;
+
+    min-height: 50px;
+
+    padding: 0 28px;
+
+    box-sizing: border-box;
+
+    color: rgb(var(--color-foreground));
+
+    font-size: 15px;
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    background: rgb(var( --color-button), 0.30);
+
+    border-bottom: 1px solid rgb(var(--color-foreground), 0.10);
+}
+
+
+/* =========================================================
+   OTHER INGREDIENTS
+========================================================= */
+
+.sf-other-content {
+    padding: 27px 28px 15px;
+    border-bottom: 1px solid rgb(var(--color-foreground), 0.10);
+   
+}
+
+
+
+
+
+.sf-other-item p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   RIGHT DIVIDER
+========================================================= */
+
+.sf-right-divider {
+    height: 1px;
+
+    margin: 0 28px;
+
+    flex-shrink: 0;
+
+    background: rgb(var(--color-button), 0.10);
+}
+
+
+/* =========================================================
+   HOW TO USE
+========================================================= */
+
+.sf-how-to-use {
+    padding: 23px 28px 22px;
+}
+
+
+.sf-how-to-use__title {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    padding: 6px 12px;
+
+    border: 1px solid rgb(var(--color-foreground), 0.9);
+
+    border-radius: 30px;
+
+    color: rgb(var(--color-foreground));
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    font-weight: 600;
+}
+
+
+.sf-how-to-use__description {
+    color: rgb(var(--color-foreground));
+    font-size: 18px;
+    line-height: 1.45;
+    padding-bottom: 44px;
+        border-bottom: 1px solid rgb(var(--color-foreground), 0.3);
+}
+
+
+/* =========================================================
+   HOW TO USE DIVIDER
+========================================================= */
+
+.sf-how-divider {
+    height: 1px;
+
+    margin-top: 28px;
+    background: rgb(var(--color-foreground), 0.10);
+}
+
+
+/* =========================================================
+   USAGE GRID
+========================================================= */
+
+.sf-usage {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    margin-top: 25px;
+}
+
+
+.sf-usage__item {
+    min-width: 0;
+
+    padding: 0 12px;
+
+    text-align: center;
+}
+
+
+.sf-usage__item+.sf-usage__item {
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   USAGE ICON
+========================================================= */
+
+.sf-usage__icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    margin: 0 auto 9px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   UPLOADED IMAGE
+========================================================= */
+
+.sf-usage__icon--image img {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   SVG FALLBACK
+========================================================= */
+
+.sf-usage__icon--svg svg {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+
+    stroke: #fff;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   USAGE TITLE
+========================================================= */
+
+.sf-usage__title {
+    color: rgb(var(--color-foreground));
+
+    font-size: 14px;
+
+    line-height: 1.3;
+
+    font-weight: 500;
+}
+
+.sf-usage__item:first-child{
+
+    padding-left: 0;
+}
+.sf-usage__item:last-child{
+
+    padding-right: 0;
+}
+/* =========================================================
+   USAGE DESCRIPTION
+========================================================= */
+
+.sf-usage__description {
+    margin-top: 4px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 11px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    .supplement-facts {
+        padding: 50px 20px;
+    }
+
+
+    .supplement-facts__content {
+        grid-template-columns: 1fr;
+    }
+
+
+    .supplement-facts__header {
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 749px) {
+
+    .supplement-facts {
+        min-height: var(--sf-mobile-height);
+
+        padding: 35px 16px 50px;
+    }
+
+
+    .supplement-facts__background {
+        background-position: center top;
+    }
+
+
+    /* -----------------------------------------
+     Header
+  ----------------------------------------- */
+
+    .supplement-facts__header {
+        display: block;
+
+        margin-bottom: 20px;
+
+        text-align: center;
+    }
+
+
+    .supplement-facts__heading {
+        margin-bottom: 10px;
+
+        font-size: 30px;
+    }
+
+
+    .supplement-facts__serving {
+        font-size: 15px;
+
+        line-height: 1.4;
+
+        white-space: normal;
+
+        text-align: center;
+    }
+
+
+    /* -----------------------------------------
+     Main Content
+  ----------------------------------------- */
+
+    .supplement-facts__content {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    /* -----------------------------------------
+     Ingredients Header
+  ----------------------------------------- */
+
+    .sf-card__header--ingredients {
+        /*
+      Mobile ratio
+    */
+        grid-template-columns: 55% 45%;
+    }
+
+
+    .sf-card__header--ingredients>div {
+        min-height: 45px;
+
+        padding: 0 18px;
+
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------
+     Ingredients List
+  ----------------------------------------- */
+
+    .sf-ingredients-list {
+        width: 100%;
+
+        padding: 0;
+    }
+
+
+    .sf-ingredient {
+        /*
+      MUST MATCH MOBILE HEADER
+    */
+        grid-template-columns: 55% 45%;
+
+        min-height: 43px;
+    }
+
+
+    .sf-ingredient__name,
+    .sf-ingredient__amount {
+        padding-top: 9px;
+
+        padding-bottom: 9px;
+
+        font-size: 14px;
+
+        line-height: 1.35;
+    }
+
+
+    .sf-ingredient__name {
+        padding-left: 18px;
+
+        padding-right: 18px;
+    }
+
+
+    .sf-ingredient__amount {
+        padding-left: 18px;
+
+        padding-right: 18px;
+    }
+
+
+    /* -----------------------------------------
+     Right Header
+  ----------------------------------------- */
+
+    .sf-card__header--single {
+        min-height: 45px;
+
+        padding: 0 18px;
+
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------
+     Other Ingredients
+  ----------------------------------------- */
+
+    .sf-other-content {
+        padding: 21px 18px 20px;
+
+        min-height: auto;
+    }
+
+
+    .sf-other-item {
+        font-size: 15px;
+
+        line-height: 1.5;
+    }
+
+
+    .sf-right-divider {
+        margin: 0 18px;
+    }
+
+
+    /* -----------------------------------------
+     How To Use
+  ----------------------------------------- */
+
+    .sf-how-to-use {
+        padding: 20px 18px;
+    }
+
+
+    .sf-how-to-use__title {
+        margin-bottom: 12px;
+
+        padding: 6px 10px;
+
+        font-size: 12px;
+    }
+
+
+    .sf-how-to-use__description {
+        font-size: 15px;
+
+        line-height: 1.45;
+    }
+
+
+    .sf-how-divider {
+        margin-top: 18px;
+    }
+
+
+    /* -----------------------------------------
+     Usage
+  ----------------------------------------- */
+
+    .sf-usage {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        margin-top: 18px;
+    }
+
+
+    .sf-usage__item {
+        padding: 0 5px;
+    }
+
+
+    .sf-usage__icon {
+        width: 35px;
+        height: 35px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .sf-usage__icon--image img {
+        width: 15px;
+        height: 15px;
+    }
+
+
+    .sf-usage__icon--svg svg {
+        width: 15px;
+        height: 15px;
+    }
+
+
+    .sf-usage__title {
+        font-size: 13px;
+
+        line-height: 1.25;
+    }
+
+
+    .sf-usage__description {
+        font-size: 8px;
+
+        line-height: 1.25;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 420px) {
+
+    .supplement-facts {
+        padding-right: 12px;
+
+        padding-left: 12px;
+    }
+
+
+    .supplement-facts__heading {
+        font-size: 27px;
+    }
+
+
+    .sf-ingredient__name,
+    .sf-ingredient__amount {
+        font-size: 14px;
+    }
+
+
+    .sf-usage__title {
+        font-size: 12px;
+    }
+
+}

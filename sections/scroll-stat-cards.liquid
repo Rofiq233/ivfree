@@ -1,0 +1,821 @@
+{{ 'scroll-stat-cards.css' | asset_url | stylesheet_tag }}
+
+<script
+  src="{{ 'scroll-stat-cards.js' | asset_url }}"
+  defer="defer"
+></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="ScrollStatCards-{{ section.id }}"
+  class="scroll-stat-cards gradient color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding"
+  data-scroll-stat-section
+  data-section-id="{{ section.id }}"
+  style="
+    --scroll-stat-card-gap: {{ section.settings.card_gap }}px;
+    --scroll-stat-card-radius: {{ section.settings.card_radius }}px;
+    --scroll-stat-card-padding: {{ section.settings.card_padding }}px;
+    --scroll-stat-row-height: {{ section.settings.row_height }}px;
+
+    --scroll-stat-button-background: {{ section.settings.button_background }};
+    --scroll-stat-button-color: {{ section.settings.button_color }};
+  "
+>
+
+
+  <div class="scroll-stat-cards__container page-width">
+
+
+    <!-- =====================================================
+         LEFT CONTENT
+    ====================================================== -->
+
+    <div class="scroll-stat-cards__left">
+
+
+      {% if section.settings.eyebrow != blank %}
+
+        <div class="scroll-stat-cards__eyebrow">
+          {{ section.settings.eyebrow }}
+        </div>
+
+      {% endif %}
+
+
+      {% if section.settings.heading != blank %}
+
+        <h2 class="scroll-stat-cards__heading {{ section.settings.heading_sizes }}">
+          {{ section.settings.heading }}
+        </h2>
+
+      {% endif %}
+
+
+      {% if section.settings.description != blank %}
+
+        <div class="scroll-stat-cards__description rte {{ section.settings.text_style }}">
+          {{ section.settings.description }}
+        </div>
+
+      {% endif %}
+
+
+      {% if section.settings.btn != blank %}
+
+        <a
+          class="scroll-stat-cards__button button button--{{ section.settings.button_style }}"
+          href="{{ section.settings.url | default: '#' }}"
+        >
+
+          <span>
+            {{ section.settings.btn }}
+          </span>
+
+          <span
+            class="scroll-stat-cards__button-icon"
+            aria-hidden="true"
+          >
+            {% render 'icons' icon:'button-arrow', width: '16', height: '16', class: 'icon-arrow' %}
+          </span>
+
+        </a>
+
+      {% endif %}
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RIGHT STICKY CARD AREA
+    ====================================================== -->
+
+    <div class="scroll-stat-cards__right">
+
+      <div class="scroll-stat-cards__sticky">
+
+        <div class="scroll-stat-cards__grid">
+
+
+          {% for block in section.blocks %}
+
+
+            {% assign has_image = false %}
+
+            {% if block.settings.image != blank %}
+              {% assign has_image = true %}
+            {% endif %}
+
+
+            <article
+              class="
+                scroll-stat-card
+                scroll-stat-card--{{ block.settings.card_width }}
+                scroll-stat-card--{{ block.settings.card_height }}
+
+                {% if has_image %}
+                  scroll-stat-card--has-image
+                {% endif %}
+              "
+
+              data-stat-card
+
+              {{ block.shopify_attributes }}
+
+              style="
+                --card-bg: {{ block.settings.background_color }};
+                --card-color: {{ block.settings.text_color }};
+              "
+            >
+
+
+              <!-- =================================================
+                   IMAGE
+              ================================================== -->
+
+              {% if block.settings.image != blank %}
+
+                <div class="scroll-stat-card__media">
+
+                  {{
+                    block.settings.image
+                    | image_url: width: 1600
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '400, 600, 800, 1000, 1200, 1600',
+                      sizes: '(min-width: 990px) 45vw, 100vw',
+                      class: 'scroll-stat-card__image'
+                  }}
+
+                </div>
+
+              {% endif %}
+
+
+
+              <!-- =================================================
+                   GRADIENT
+              ================================================== -->
+
+              {% if block.settings.image != blank %}
+
+                <div class="scroll-stat-card__gradient"></div>
+
+              {% endif %}
+
+
+
+              <!-- =================================================
+                   CONTENT
+              ================================================== -->
+
+              <div class="scroll-stat-card__content">
+
+
+                {% if block.settings.badge != blank %}
+
+                  <div class="scroll-stat-card__badge">
+                    {{ block.settings.badge }}
+                  </div>
+
+                {% endif %}
+
+
+
+                <div class="scroll-stat-card__bottom">
+
+
+                  {% if block.settings.stat_value != blank %}
+
+                    <div
+                      class="scroll-stat-card__stat"
+                      data-counter
+                      data-target="{{ block.settings.stat_value }}"
+                      data-prefix="{{ block.settings.stat_prefix }}"
+                      data-suffix="{{ block.settings.stat_suffix }}"
+                    >
+                      {{ block.settings.stat_prefix }}0{{ block.settings.stat_suffix }}
+                    </div>
+
+                  {% endif %}
+
+
+
+                  {% if block.settings.description != blank %}
+
+                    <div class="scroll-stat-card__text">
+                      {{ block.settings.description }}
+                    </div>
+
+                  {% endif %}
+
+
+                </div>
+
+
+              </div>
+
+
+            </article>
+
+
+          {% endfor %}
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+{% schema %}
+
+{
+  "name": "Scroll Stat Cards",
+
+  "tag": "section",
+
+  "class": "section-scroll-stat-cards",
+
+
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Left Content"
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why choose us"
+    },
+
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>No Other <em>Supplement</em> Does What LongevIt™ Does.</p>"
+    },
+    {
+          "type": "select",
+          "id": "heading_sizes",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Built around clinically researched ingredients and designed to support your everyday health.</p>"
+    }, 
+    {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__2.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
+        },
+
+   {
+        "type": "text",
+        "id": "btn",
+        "label": "Button text",
+         "default":"Shop now"
+       },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "primary-outline",
+              "label": "Primary outline"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "secondary-outline",
+              "label": "Secondary Outline"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Url"
+        },
+
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card gap",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "default": 10,
+      "unit": "px"
+    },
+
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 8,
+      "unit": "px"
+    },
+
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "default": 18,
+      "unit": "px"
+    },
+
+    {
+      "type": "range",
+      "id": "row_height",
+      "label": "Base row height",
+      "min": 100,
+      "max": 350,
+      "step": 10,
+      "default": 170,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F2F5FA"
+    },
+       {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            }
+,
+
+
+  {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+
+
+  ],
+
+
+
+  "blocks": [
+
+    {
+      "type": "stat_card",
+
+      "name": "Stat Card",
+
+
+      "settings": [
+
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+
+
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "CELLULAR ENERGY"
+        },
+
+
+        {
+          "type": "header",
+          "content": "Statistic"
+        },
+
+
+        {
+          "type": "text",
+          "id": "stat_value",
+          "label": "Number",
+          "info": "Example: 38, 6.5, 12.25"
+        },
+
+
+        {
+          "type": "text",
+          "id": "stat_prefix",
+          "label": "Prefix",
+          "default": "+"
+        },
+
+
+        {
+          "type": "text",
+          "id": "stat_suffix",
+          "label": "Suffix",
+          "default": "%"
+        },
+
+
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card text",
+          "default": "Increase in NAD+ levels in 60 days vs placebo."
+        },
+
+
+        {
+          "type": "header",
+          "content": "Card Width"
+        },
+
+
+        {
+          "type": "select",
+          "id": "card_width",
+          "label": "Width",
+          "options": [
+
+            {
+              "value": "third",
+              "label": "1/3 width"
+            },
+
+            {
+              "value": "half",
+              "label": "1/2 width"
+            },
+
+            {
+              "value": "two-thirds",
+              "label": "2/3 width"
+            },
+
+            {
+              "value": "full",
+              "label": "Full width"
+            }
+
+          ],
+
+          "default": "third"
+        },
+
+
+        {
+          "type": "select",
+          "id": "card_height",
+          "label": "Height",
+          "options": [
+
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+
+            {
+              "value": "tall",
+              "label": "Tall"
+            }
+
+          ],
+
+          "default": "normal"
+        },
+
+
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+
+
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#DCE5F7"
+        },
+
+
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#123A88"
+        }
+
+      ]
+
+    }
+
+  ],
+
+
+
+  "presets": [
+
+    {
+      "name": "Scroll Stat Cards",
+
+
+      "blocks": [
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "CELLULAR ENERGY",
+
+            "stat_value": "38",
+
+            "stat_prefix": "+",
+
+            "stat_suffix": "%",
+
+            "description": "Increases in NAD+ levels in 60 days vs placebo.",
+
+            "card_width": "full",
+
+            "card_height": "normal"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "BIOLOGICAL AGE",
+
+            "description": "Formulated to support cellular renewal, biological health span markers, and metabolic health.",
+
+            "card_width": "half",
+
+            "card_height": "tall"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "METABOLIC HEALTH",
+
+            "description": "Helps in better Insulin Control vs placebo group.",
+
+            "card_width": "half",
+
+            "card_height": "tall"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "HEART HEALTH",
+
+            "description": "Reduced Fatigue & Heart Strain during physical activity.",
+
+            "card_width": "third",
+
+            "card_height": "normal"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "SKIN HEALTH",
+
+            "description": "Visible Skin Improvements hydration, tone & thickness.",
+
+            "card_width": "third",
+
+            "card_height": "normal"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "QUALITY OF LIFE",
+
+            "stat_value": "6.5",
+
+            "stat_prefix": "+",
+
+            "stat_suffix": "%",
+
+            "description": "Improvement in overall wellbeing scores.",
+
+            "card_width": "third",
+
+            "card_height": "normal"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "CARDIOVASCULAR BALANCE",
+
+            "description": "Supports cardiovascular balance and healthy circulation.",
+
+            "card_width": "two-thirds",
+
+            "card_height": "normal"
+
+          }
+
+        },
+
+
+        {
+          "type": "stat_card",
+
+          "settings": {
+
+            "badge": "INFLAMMATION CONTROL",
+
+            "description": "Designed to support healthy inflammatory response.",
+
+            "card_width": "third",
+
+            "card_height": "tall"
+
+          }
+
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}

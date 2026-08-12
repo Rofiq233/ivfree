@@ -170,7 +170,7 @@
       "name": "Logo Marquee",
       "settings": {
         "heading": "",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "logo_height": 56,
         "logo_width": 160,
         "logo_gap": 4,
@@ -179,7 +179,97 @@
         "pause_on_hover": true,
         "mobile_enable": true,
         "section_padding_top": 10,
-        "section_padding_bottom": 10
+        "section_padding_bottom": 10,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "video_content_showcase_4Ch7pp": {
+      "type": "video-content-showcase",
+      "blocks": {
+        "content_link_tLiWVG": {
+          "type": "content_link",
+          "settings": {
+            "link_text": "<a href=\"/pages/hydrate-electrolyte-complex-120-tablets-1\" title=\"Hydrate Electrolyte Complex – 120 Tablets\">Click here</a> to view more",
+            "show_arrow": true
+          }
+        },
+        "content_link_Eg6Tai": {
+          "type": "content_link",
+          "settings": {
+            "link_text": "<a href=\"/collections/asset-pack-75487477762-example-products\" title=\"Default example products\">Click here</a> to view more",
+            "show_arrow": true
+          }
+        },
+        "certification_DnMYmw": {
+          "type": "certification",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1321323661_1.png",
+            "title": "ISO CERTIFIED"
+          }
+        },
+        "certification_QggDzW": {
+          "type": "certification",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1321323661_1.png",
+            "title": "Intertek"
+          }
+        },
+        "certification_qUxkyE": {
+          "type": "certification",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1321323661_1.png",
+            "title": "ISO CERTIFIED"
+          }
+        },
+        "certification_RdwNGe": {
+          "type": "certification",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1321323661_1.png",
+            "title": "ISO CERTIFIED"
+          }
+        },
+        "certification_QqMwxD": {
+          "type": "certification",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1321323661_1.png",
+            "title": "ISO CERTIFIED"
+          }
+        },
+        "certification_HbbmDq": {
+          "type": "certification",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1321323661_1.png",
+            "title": "ISO CERTIFIED"
+          }
+        }
+      },
+      "block_order": [
+        "content_link_tLiWVG",
+        "content_link_Eg6Tai",
+        "certification_DnMYmw",
+        "certification_QggDzW",
+        "certification_qUxkyE",
+        "certification_RdwNGe",
+        "certification_QqMwxD",
+        "certification_HbbmDq"
+      ],
+      "name": "Video Content Showcase",
+      "settings": {
+        "background_video": "shopify://files/videos/video-2.mp4",
+        "overlay_color": "#14213a",
+        "overlay_opacity": 30,
+        "eyebrow": "CERTIFICATIONS",
+        "heading": "We Prioritise Safety And Quality.",
+        "heading_size": "h0",
+        "description": "<p>Every batch of our products is third-party tested for purity and potency by globally recognized labs.</p>",
+        "text_style": "body",
+        "min_height": 680,
+        "content_max_width": 700,
+        "border_radius": 12,
+        "section_color_scheme": "scheme-3"
       }
     },
     "related-products": {
@@ -474,15 +564,338 @@
         "mobile_padding_top": 36,
         "mobile_padding_bottom": 36
       }
+    },
+    "scroll_stat_cards_DEqide": {
+      "type": "scroll-stat-cards",
+      "blocks": {
+        "stat_card_f6Y8Fp": {
+          "type": "stat_card",
+          "settings": {
+            "image": "shopify://shop_images/Cellular_Energy_Frame.png",
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "45",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "full",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_jD39ne": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "half",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_MkdPXy": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "half",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_arLVpw": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "third",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_kgFcTH": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "third",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_bQhVeF": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "third",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_Mggjr6": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "half",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        },
+        "stat_card_3qd6qc": {
+          "type": "stat_card",
+          "settings": {
+            "badge": "CELLULAR ENERGY",
+            "stat_value": "",
+            "stat_prefix": "+",
+            "stat_suffix": "%",
+            "description": "Increase in NAD+ levels in 60 days vs placebo.",
+            "card_width": "half",
+            "card_height": "tall",
+            "background_color": "#dce5f7",
+            "text_color": "#123a88"
+          }
+        }
+      },
+      "block_order": [
+        "stat_card_f6Y8Fp",
+        "stat_card_jD39ne",
+        "stat_card_MkdPXy",
+        "stat_card_arLVpw",
+        "stat_card_kgFcTH",
+        "stat_card_bQhVeF",
+        "stat_card_Mggjr6",
+        "stat_card_3qd6qc"
+      ],
+      "name": "Scroll Stat Cards",
+      "settings": {
+        "eyebrow": "Why choose us",
+        "heading": "<p>No Other <em>Supplement</em> Does What LongevIt™ Does.</p>",
+        "heading_sizes": "h1",
+        "description": "<p>Built around clinically researched ingredients and designed to support your everyday health.</p>",
+        "text_style": "body",
+        "btn": "Shop now",
+        "button_style": "primary",
+        "url": "",
+        "card_gap": 10,
+        "card_radius": 8,
+        "card_padding": 18,
+        "row_height": 170,
+        "background_color": "#f1f4fa",
+        "section_color_scheme": "scheme-aa48a24f-bd90-4b40-81a1-f62f5f44bd41",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "information_tabs_6f6cbC": {
+      "type": "information-tabs",
+      "blocks": {
+        "tab_T7CmwX": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Why We Age",
+            "image": "shopify://shop_images/Group_1321324020_1.png"
+          }
+        },
+        "tab_yBkMzN": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "NMN restores NAD+",
+            "image": "shopify://shop_images/Group_1321324232_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_T7CmwX",
+        "tab_yBkMzN"
+      ],
+      "name": "Information Tabs",
+      "settings": {
+        "heading": "Everything You Need To Know",
+        "heading_size": "h1",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "supplement_facts_NF6aDW": {
+      "type": "supplement-facts",
+      "blocks": {
+        "ingredient_Yizakd": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "β-Nicotinamide Mononucleotide (Decode Age® NMN)",
+            "amount": "200 MG"
+          }
+        },
+        "ingredient_FU8JMV": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "CoQ10",
+            "amount": "100 MG"
+          }
+        },
+        "ingredient_kgRjHc": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Curcumin",
+            "amount": "75 MG"
+          }
+        },
+        "ingredient_gAAKpw": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Piperine",
+            "amount": "25 MG"
+          }
+        },
+        "ingredient_V9M8bp": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "L-Glycine",
+            "amount": "100 MG"
+          }
+        },
+        "ingredient_MrgWPU": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Hyaluronic Acid",
+            "amount": "100 MG"
+          }
+        },
+        "ingredient_3KNXzT": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Ginger Extract",
+            "amount": "100 MG"
+          }
+        },
+        "ingredient_XnQPXK": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Ginseng",
+            "amount": "100 MG"
+          }
+        },
+        "ingredient_fhgAMQ": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Ca-AKG (Calcium Alpha-Keto Glutarate)",
+            "amount": "80 MG"
+          }
+        },
+        "other_ingredient_hixXGn": {
+          "type": "other_ingredient",
+          "settings": {
+            "text": "<p>Magnesium Stearate, CMC (Carboxymethyl Cellulose) and Dextrin.</p>"
+          }
+        },
+        "usage_item_c46dWg": {
+          "type": "usage_item",
+          "settings": {
+            "icon": "clock",
+            "title": "After breakfast or lunch",
+            "description": ""
+          }
+        },
+        "usage_item_FUrj6P": {
+          "type": "usage_item",
+          "settings": {
+            "icon": "capsule",
+            "title": "1 Tablet",
+            "description": ""
+          }
+        },
+        "usage_item_GUeLMJ": {
+          "type": "usage_item",
+          "settings": {
+            "icon": "water",
+            "title": "With Water",
+            "description": ""
+          }
+        },
+        "usage_item_VTXgEz": {
+          "type": "usage_item",
+          "settings": {
+            "icon": "calendar",
+            "title": "Consume Daily",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_Yizakd",
+        "ingredient_FU8JMV",
+        "ingredient_kgRjHc",
+        "ingredient_gAAKpw",
+        "ingredient_V9M8bp",
+        "ingredient_MrgWPU",
+        "ingredient_3KNXzT",
+        "ingredient_XnQPXK",
+        "ingredient_fhgAMQ",
+        "other_ingredient_hixXGn",
+        "usage_item_c46dWg",
+        "usage_item_FUrj6P",
+        "usage_item_GUeLMJ",
+        "usage_item_VTXgEz"
+      ],
+      "name": "Supplement Facts",
+      "settings": {
+        "background_image": "shopify://shop_images/Rectangle_2054_1_7ac04cd5-e820-4b25-96e3-c07f101fe5c6.png",
+        "desktop_height": 700,
+        "mobile_height": 950,
+        "overlay_opacity": 5,
+        "heading": "Supplements Facts",
+        "heading_size": "h1",
+        "serving_info": "Serving per container: 30  Serving Size: 1 Tablet",
+        "ingredients_title": "INGREDIENTS",
+        "amount_title": "AMOUNT PER SERVING",
+        "other_ingredients_title": "OTHER INGREDIENTS",
+        "how_to_use_title": "HOW TO USE",
+        "how_to_use_description": "Take one tablet daily after breakfast or lunch or as directed by your healthcare practitioner.",
+        "section_color_scheme": "scheme-3"
+      }
     }
   },
   "order": [
     "main",
     "logo_marquee_GRYwGG",
+    "video_content_showcase_4Ch7pp",
     "related-products",
     "traceable_ingredients_wbeymh",
     "multicolumn_YTFN8P",
     "interactive_timeline_ETB3ma",
-    "science_accordion_F3nWyV"
+    "science_accordion_F3nWyV",
+    "scroll_stat_cards_DEqide",
+    "information_tabs_6f6cbC",
+    "supplement_facts_NF6aDW"
   ]
 }
