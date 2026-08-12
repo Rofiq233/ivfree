@@ -1,0 +1,586 @@
+
+
+
+.content-cards-heading {
+  max-width: 950px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content-cards-description {
+  max-width: 620px;
+  margin: 8px auto 32px;
+
+  text-align: center;
+
+}
+
+.content-cards-description p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   SLIDER
+========================================================= */
+
+.content-cards-slider {
+  width: 100%;
+}
+
+.content-cards-track {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.content-card {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.content-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  overflow: hidden;
+
+  border-radius: 6px;
+}
+
+.content-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.content-card-image--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-card-image--placeholder svg {
+  display: block;
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.content-card-title {
+  margin: 15px 0 0;
+  color:rgb(var(--color-heading));
+  font-size: 22px;
+
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.content-card-text {
+    min-height: 48px;
+    margin-top: 10px;
+    color: rgb(var(--color-foreground));
+    font-size: 19px;
+    line-height: 1.55;
+    font-weight: 400;
+}
+
+.content-card-text p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   CARD DIVIDER
+========================================================= */
+
+.content-card-divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 17px;
+  display: block !important;
+  background: rgba(var(--color-foreground), 0.16);
+}
+
+
+/* =========================================================
+   CARD BADGE
+========================================================= */
+
+.content-card-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-card-badge span{
+width: fit-content;
+  max-width: 100%;
+
+  margin-top: 16px;
+
+  padding: 4px 11px;
+
+  border: 1px solid rgba(var(--color-foreground));
+
+  border-radius: 999px;
+
+  color: rgba(var(--color-foreground));
+
+  font-size: 15px;
+  line-height: 1.2;
+
+  font-weight: 500;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.01em;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   CUSTOM PROGRESS
+   Hidden on desktop
+========================================================= */
+
+.content-cards-progress {
+  display: none;
+}
+
+.content-cards-progress-bar {
+  display: block;
+
+  height: 100%;
+
+  background: rgba(var(--color-foreground));
+
+  border-radius: 999px;
+
+  transform: translateX(0);
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 990px) {
+
+  .content-cards-heading {
+    font-size: 40px;
+  }
+
+  .content-cards-description {
+    margin-bottom: 26px;
+  }
+
+  .content-cards-track {
+    gap: 12px;
+  }
+
+  .content-card-title {
+    font-size: 18px;
+  }
+
+  .content-card-text {
+    font-size: 16px;
+  }
+
+  .content-card-badge {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  /* -----------------------------------------
+     SECTION
+  ----------------------------------------- */
+
+  .content-cards-section {
+    padding-top: var(--cc-mobile-padding-top, 30px);
+    padding-bottom: var(--cc-mobile-padding-bottom, 35px);
+  }
+
+
+  /* -----------------------------------------
+     CONTAINER
+  ----------------------------------------- */
+
+  .content-cards-container {
+    width: 100%;
+    margin: 0;
+  }
+
+
+  /* -----------------------------------------
+     HEADING
+  ----------------------------------------- */
+
+  .content-cards-heading {
+    width: calc(100% - 48px);
+
+    max-width: none;
+
+    margin: 0 auto;
+
+    font-size: 25px;
+    line-height: 1.12;
+
+    letter-spacing: -0.035em;
+  }
+
+
+  /* -----------------------------------------
+     DESCRIPTION
+  ----------------------------------------- */
+
+  .content-cards-description {
+    width: calc(100% - 48px);
+
+    max-width: none;
+
+    margin: 8px auto 20px;
+
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+
+  /* -----------------------------------------
+     SLIDER
+  ----------------------------------------- */
+
+  .content-cards-slider {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  /* -----------------------------------------
+     TRACK
+  ----------------------------------------- */
+
+  .content-cards-track {
+    display: flex;
+
+    flex-wrap: nowrap;
+
+    gap: 10px;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-left: 27px;
+    padding-right: 27px;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-x: contain;
+
+    /*
+      Hide native scrollbar.
+      Custom progress bar is used instead.
+    */
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+  }
+
+  .content-cards-track::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     CARD
+  ----------------------------------------- */
+
+  .content-card {
+    flex: 0 0 243px;
+
+    width: 243px;
+
+    min-width: 243px;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: normal;
+  }
+
+
+  /* -----------------------------------------
+     IMAGE
+  ----------------------------------------- */
+
+  .content-card-image {
+    width: 243px;
+
+    height: 325px;
+
+    aspect-ratio: auto;
+
+    border-radius: 5px;
+  }
+
+  .content-card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center top;
+  }
+
+
+  /* -----------------------------------------
+     TITLE
+  ----------------------------------------- */
+
+  .content-card-title {
+    margin-top: 12px;
+
+    font-size: 17px;
+
+    line-height: 1.3;
+
+    font-weight: 500;
+  }
+
+
+  /* -----------------------------------------
+     DESCRIPTION
+  ----------------------------------------- */
+
+  .content-card-text {
+    min-height: 42px;
+
+    margin-top: 8px;
+
+    font-size: 18px;
+
+    line-height: 1.45;
+  }
+
+
+  /* -----------------------------------------
+     DIVIDER
+  ----------------------------------------- */
+
+  .content-card-divider {
+    margin-top: 11px;
+  }
+
+
+  /* -----------------------------------------
+     BADGE
+  ----------------------------------------- */
+
+
+.content-card-badge span{
+    max-width: 100%;
+
+    margin-top: 12px;
+
+    padding: 4px 9px;
+
+    font-size: 12px;
+
+    line-height: 1.2;
+
+    letter-spacing: 0;
+}
+  /* =====================================================
+     CUSTOM SCROLL PROGRESS
+  ===================================================== */
+
+  .content-cards-progress {
+    display: block;
+
+    position: relative;
+
+    width: calc(100% - 54px);
+
+    height: 3px;
+
+    margin: 20px auto 0;
+
+    overflow: hidden;
+
+    background: rgba(var(--color-button), 0.15);
+
+    border-radius: 999px;
+  }
+
+  .content-cards-progress-bar {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 30%;
+
+    height: 100%;
+
+    background: rgb(var(--color-button-hover));
+
+    border-radius: 999px;
+
+    transform: translateX(0);
+
+    transition: transform 0.05s linear;
+
+    will-change: transform;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 380px) {
+
+  /* -----------------------------------------
+     Heading
+  ----------------------------------------- */
+
+  .content-cards-heading {
+    width: calc(100% - 40px);
+
+    font-size: 25px;
+  }
+
+
+  /* -----------------------------------------
+     Description
+  ----------------------------------------- */
+
+  .content-cards-description {
+    width: calc(100% - 40px);
+
+    font-size: 16px;
+  }
+
+
+  /* -----------------------------------------
+     Track
+  ----------------------------------------- */
+
+  .content-cards-track {
+    gap: 10px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  /* -----------------------------------------
+     Card
+  ----------------------------------------- */
+
+  .content-card {
+    flex: 0 0 235px;
+
+    width: 235px;
+
+    min-width: 235px;
+  }
+
+
+  /* -----------------------------------------
+     Image
+  ----------------------------------------- */
+
+  .content-card-image {
+    width: 235px;
+
+    height: 315px;
+  }
+
+
+  /* -----------------------------------------
+     Progress
+  ----------------------------------------- */
+
+  .content-cards-progress {
+    width: calc(100% - 40px);
+
+    margin-top: 18px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 340px) {
+
+  .content-cards-heading {
+    font-size: 23px;
+  }
+
+  .content-cards-description {
+    font-size: 16px;
+  }
+
+  .content-cards-track {
+    gap: 8px;
+  }
+
+  .content-card {
+    flex: 0 0 225px;
+
+    width: 225px;
+
+    min-width: 225px;
+  }
+
+  .content-card-image {
+    width: 225px;
+
+    height: 300px;
+  }
+}
