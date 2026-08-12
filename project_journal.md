@@ -72,3 +72,5 @@ scheme 3 , image banner ( text, heading,bg )
 
   ## v0.12.0
 scroll card section, tab section supplements section added
+  ## v0.13.0
+info section added
