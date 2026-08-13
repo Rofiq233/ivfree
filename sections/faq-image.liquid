@@ -1,0 +1,382 @@
+{{ 'faq-image.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+
+
+<div
+  id="faq-image-{{ section.id }}"
+  class="faq-image-section gradient color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding"
+>
+  <div class="faq-image-container page-width">
+
+    <!-- =========================================
+         IMAGE
+    ========================================== -->
+
+    <div class="faq-image-media">
+
+      {% if section.settings.image != blank %}
+
+        {{
+          section.settings.image
+          | image_url: width: 1600
+          | image_tag:
+            loading: 'lazy',
+            widths: '375, 550, 750, 1100, 1400, 1600',
+            sizes: '(min-width: 750px) 50vw, 100vw',
+            class: 'faq-image'
+        }}
+
+      {% else %}
+
+        {{ 
+          'lifestyle-1'
+          | placeholder_svg_tag: 'faq-image faq-image-placeholder'
+        }}
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- =========================================
+         CONTENT
+    ========================================== -->
+
+    <div class="faq-content">
+
+      {% if section.settings.heading != blank %}
+
+        <h2 class="faq-heading {{ section.settings.heading_size }}">
+
+          {{ section.settings.heading }}
+
+          {% if section.settings.heading_italic != blank %}
+            <span>
+              {{ section.settings.heading_italic }}
+            </span>
+          {% endif %}
+
+        </h2>
+
+      {% endif %}
+
+
+      <!-- =========================================
+           FAQ LIST
+      ========================================== -->
+
+      <div class="faq-list">
+
+        {% for block in section.blocks %}
+
+          <div
+            class="faq-item{% if forloop.first %} is-open{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+
+            <!-- QUESTION -->
+
+            <button
+              type="button"
+              class="faq-question"
+              aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-controls="faq-answer-{{ block.id }}"
+            >
+
+              <span class="faq-question-text">
+                {{ block.settings.question }}
+              </span>
+
+
+              <!-- ICON -->
+
+              <span
+                class="faq-icon"
+                aria-hidden="true"
+              >
+
+                <!-- Plus -->
+
+                <svg
+                  class="faq-icon-open"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9.5"
+                  ></circle>
+
+                  <path
+                    d="M8.5 12H15.5"
+                  ></path>
+
+                  <path
+                    d="M12 8.5V15.5"
+                  ></path>
+
+                </svg>
+
+
+                <!-- Minus -->
+
+                <svg
+                  class="faq-icon-close"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9.5"
+                  ></circle>
+
+                  <path
+                    d="M8.5 12H15.5"
+                  ></path>
+
+                </svg>
+
+              </span>
+
+            </button>
+
+
+            <!-- ANSWER -->
+
+            <div
+              id="faq-answer-{{ block.id }}"
+              class="faq-answer"
+            >
+
+              <div class="faq-answer-inner">
+
+                {{ block.settings.answer }}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<script
+  src="{{ 'faq-image.js' | asset_url }}"
+  defer="defer"
+></script>
+
+
+{% schema %}
+
+{
+  "name": "FAQ with image",
+
+  "tag": "section",
+
+  "class": "section-faq-image",
+
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked"
+    },
+    {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Italic heading",
+      "default": "Questions"
+    },
+     {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+         {
+              "type": "color_scheme",
+              "id": "section_color_scheme",
+              "label": "Scheme"
+            },
+    {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    }
+
+
+  ],
+
+  "blocks": [
+
+    {
+      "type": "faq",
+
+      "name": "FAQ",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is LongеVit™ and what does it do?"
+        },
+
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "presets": [
+
+    {
+      "name": "FAQ with image",
+
+      "blocks": [
+
+        {
+          "type": "faq"
+        },
+
+        {
+          "type": "faq"
+        },
+
+        {
+          "type": "faq"
+        },
+
+        {
+          "type": "faq"
+        },
+
+        {
+          "type": "faq"
+        },
+
+        {
+          "type": "faq"
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}

@@ -883,58 +883,6 @@
         "how_to_use_description": "Take one tablet daily after breakfast or lunch or as directed by your healthcare practitioner.",
         "section_color_scheme": "scheme-3"
       }
-    },
-    "content_cards_YJNw7t": {
-      "type": "content-cards",
-      "blocks": {
-        "card_3xmgHk": {
-          "type": "card",
-          "settings": {
-            "title": "Dr Richard Kaszynski, MD, PhD",
-            "text": "Global healthcare innovator and longevity science advisor.",
-            "badge": "Harvard Medical School"
-          }
-        },
-        "card_TffFrK": {
-          "type": "card",
-          "settings": {
-            "title": "Dr Xiaofeng Tong, PhD",
-            "text": "Award-winning scientist with published research in leading journals.",
-            "badge": "International Research Fellow"
-          }
-        },
-        "card_8zEEQq": {
-          "type": "card",
-          "settings": {
-            "title": "Dr Xianjie Fang, PhD",
-            "text": "Published in Science, Nature Chemistry, and other top global journals.",
-            "badge": "Shanghai Jiao Tong University"
-          }
-        }
-      },
-      "block_order": [
-        "card_3xmgHk",
-        "card_TffFrK",
-        "card_8zEEQq"
-      ],
-      "name": "Content Cards",
-      "settings": {
-        "heading": "The Minds Behind The World's Leading NMN",
-        "description": "<p>Decode Age is proud to bring Uthever® NMN, developed by world-renowned scientists - exclusively to India.</p>",
-        "background_color": "#F4F6FB",
-        "heading_color": "#173D8F",
-        "text_color": "#31539A",
-        "accent_color": "#1455E6",
-        "max_width": 1040,
-        "card_gap": 10,
-        "padding_top": 55,
-        "padding_bottom": 65,
-        "heading_size": 48,
-        "mobile_heading_size": 25,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 35,
-        "show_progress": true
-      }
     }
   },
   "order": [
@@ -948,7 +896,6 @@
     "science_accordion_F3nWyV",
     "scroll_stat_cards_DEqide",
     "information_tabs_6f6cbC",
-    "supplement_facts_NF6aDW",
-    "content_cards_YJNw7t"
+    "supplement_facts_NF6aDW"
   ]
 }
