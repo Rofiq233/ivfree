@@ -15,6 +15,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -25,19 +26,25 @@
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
 
-  {%- style -%}
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    }
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top}}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
 
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-  {%- endstyle -%}
+  }
+{%- endstyle -%}
+
+
+
+{{ 'main-product-custom.css' | asset_url | stylesheet_tag }}
+
+
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -74,22 +81,76 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <product-component view-event-payload="{{ product | standard_event_data: 'view', context: 'page' | escape }}">
-    <div class="page-width">
+         <div class="product-info-marquee-wrapper desktop-marquee">
+           
+            <div class="product-info-marquee">
+
+            {% for block in section.blocks %}
+              {% if block.type == 'marquee' %}
+
+                <div
+                  class="product-marquee"
+                  {{ block.shopify_attributes }}
+                >
+                  <span>{{ block.settings.item }}</span>
+                </div>
+
+              {% endif %}
+            {% endfor %}
+
+          </div>
+
+         </div>
+  <div class="page-width">
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
-          {% render 'product-media-gallery', variant_images: variant_images %}
-        </div>
+           
+           {% render 'custom-product-gallery', product: product, block:section.blocks %}
+
+           </div>
+           {% comment %} {% render 'product-media-gallery', variant_images: variant_images %} {% endcomment %}
         <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          <section
+            <div class="product-info-marquee-wrapper mobile-marquee">
+           
+            <div class="product-info-marquee">
+
+            {% for block in section.blocks %}
+              {% if block.type == 'marquee' %}
+
+                <div
+                  class="product-marquee"
+                  {{ block.shopify_attributes }}
+                >
+                  <span>{{ block.settings.item }}</span>
+                </div>
+
+              {% endif %}
+            {% endfor %}
+
+          </div>
+
+         </div>
+           
+        <section
             id="ProductInfo-{{ section.id }}"
             class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
-          >
+            >
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
             {%- for block in section.blocks -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
                   {% render block %}
+                 {%- when 'product-tags' -%}
+                  <div class="product-tags_wrap">
+                    {% if product.tags.size > 0 %}
+                      {% for tag in product.tags %}
+                        <span class="product-tag">{{ tag }}</span>
+                      {% endfor %}
+
+                  {% endif %}
+                  </div>
+                  
                 {%- when 'text' -%}
                   <p
                     class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -97,6 +158,7 @@
                   >
                     {{- block.settings.text -}}
                   </p>
+
                 {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
                     <h1>{{ product.title | escape }}</h1>
@@ -500,43 +562,59 @@
                     show_pickup_availability: true
                   -%}
                 {%- when 'rating' -%}
-                  {%- if product.metafields.reviews.rating.value != blank -%}
-                    <div class="rating-wrapper">
-                      {% liquid
-                        assign rating_decimal = 0
-                        assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                        if decimal >= 0.3 and decimal <= 0.7
-                          assign rating_decimal = 0.5
-                        elsif decimal > 0.7
-                          assign rating_decimal = 1
-                        endif
-                      %}
-                      <div
-                        class="rating"
-                        role="img"
-                        aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="rating-star"
-                          style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                        ></span>
+                  
+                  {% assign rating = product.metafields.reviews.rating.value %}
+                  {% assign rating_count = product.metafields.reviews.rating_count.value %}
+                  {% if rating %}
+
+                    {% assign rating_value = rating.rating | plus: 0 %}
+
+                    <div class="product-rating">
+
+                      <div class="product-rating__rank">
+                        {{ block.settings.title }}
                       </div>
-                      <p class="rating-text caption">
-                        <span aria-hidden="true">
-                          {{- product.metafields.reviews.rating.value }} /
-                          {{ product.metafields.reviews.rating.value.scale_max -}}
-                        </span>
-                      </p>
-                      <p class="rating-count caption">
-                        <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                        <span class="visually-hidden">
-                          {{- product.metafields.reviews.rating_count }}
-                          {{ 'accessibility.total_reviews' | t -}}
-                        </span>
-                      </p>
+
+                      <a href="#judgeme_product_reviews" class="product-rating__review">
+
+                        <div
+                          class="product-rating__stars"
+                          aria-label="{{ rating_value }} out of 5"
+                        >
+
+                        {% for i in (1..5) %}
+                              {% if rating_value >= i %}
+                                <svg width="20" height="20" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11.9343 5.40524L9.47334 7.52875L10.2231 10.7045C10.2645 10.8769 10.2538 11.0576 10.1925 11.224C10.1312 11.3903 10.0219 11.5348 9.87854 11.639C9.73517 11.7433 9.56411 11.8028 9.38696 11.8099C9.20982 11.817 9.03454 11.7714 8.88327 11.679L6.12155 9.9793L3.35819 11.679C3.20694 11.7709 3.03187 11.816 2.85503 11.8087C2.67819 11.8013 2.50748 11.7418 2.36441 11.6376C2.22133 11.5334 2.11228 11.3892 2.051 11.2231C1.98971 11.0571 1.97892 10.8766 2.01999 10.7045L2.77249 7.52875L0.311548 5.40524C0.177727 5.28958 0.0809444 5.13706 0.0332884 4.96672C-0.0143677 4.79639 -0.0107855 4.61579 0.0435874 4.44748C0.0979604 4.27917 0.200714 4.1306 0.339017 4.02034C0.477319 3.91008 0.645041 3.84301 0.821235 3.8275L4.0478 3.56719L5.29248 0.555002C5.35986 0.39084 5.47452 0.250419 5.62191 0.151593C5.76929 0.0527673 5.94273 0 6.12018 0C6.29763 0 6.47107 0.0527673 6.61845 0.151593C6.76584 0.250419 6.8805 0.39084 6.94788 0.555002L8.19202 3.56719L11.4186 3.8275C11.5951 3.84243 11.7633 3.90913 11.9021 4.01924C12.0409 4.12935 12.1442 4.27797 12.1989 4.44649C12.2536 4.615 12.2574 4.79591 12.2097 4.96656C12.1621 5.13721 12.0651 5.28999 11.931 5.40578L11.9343 5.40524Z" fill="currentColor"/>
+                                            </svg>
+                              {% else %}
+                                    <svg width="20" height="20" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M12.6333 4.59356C12.5655 4.38428 12.4371 4.19982 12.2644 4.06353C12.0917 3.92724 11.8825 3.84525 11.6632 3.82794L8.56839 3.57802L7.37402 0.689969C7.29008 0.485853 7.14737 0.311287 6.96403 0.188438C6.78068 0.0655889 6.56495 0 6.34425 0C6.12355 0 5.90783 0.0655889 5.72448 0.188438C5.54113 0.311287 5.39842 0.485853 5.31449 0.689969L4.1212 3.57856L1.02644 3.82794C0.806717 3.84606 0.597252 3.92872 0.424367 4.06553C0.251483 4.20234 0.122891 4.3872 0.0547528 4.59687C-0.0133856 4.80654 -0.0180309 5.03168 0.0414006 5.24399C0.100832 5.4563 0.221689 5.6463 0.388783 5.79012L2.75019 7.82669L2.02831 10.8728C1.97566 11.0875 1.98812 11.3131 2.06409 11.5208C2.14007 11.7284 2.27613 11.9088 2.45494 12.0389C2.63375 12.1689 2.84724 12.2429 3.0682 12.2512C3.28917 12.2596 3.50762 12.202 3.69574 12.0857L6.34425 10.4555L8.99277 12.0857C9.18084 12.2012 9.39893 12.2582 9.61943 12.2496C9.83993 12.2411 10.0529 12.1673 10.2315 12.0376C10.41 11.9079 10.546 11.7281 10.6224 11.5211C10.6987 11.314 10.7118 11.089 10.6602 10.8744L9.93831 7.82833L12.2997 5.79177C12.4678 5.64759 12.5893 5.45672 12.6487 5.24338C12.7081 5.03004 12.7027 4.80386 12.6333 4.59356ZM8.77949 7.09278C8.68843 7.17128 8.62069 7.27329 8.58366 7.38767C8.54662 7.50205 8.54172 7.6244 8.56949 7.74137L9.27441 10.7186L6.68824 9.12825C6.5848 9.06458 6.46572 9.03087 6.34425 9.03087C6.22279 9.03087 6.10371 9.06458 6.00027 9.12825L3.4141 10.7186L4.11902 7.74356C4.14678 7.62659 4.14188 7.50423 4.10485 7.38986C4.06782 7.27548 4.00007 7.17347 3.90902 7.09497L1.59738 5.09888L4.62706 4.85442C4.74763 4.84474 4.86317 4.80192 4.96093 4.7307C5.05869 4.65947 5.13487 4.56262 5.18105 4.45083L6.34425 1.63442L7.50745 4.45083C7.55363 4.56262 7.62981 4.65947 7.72757 4.7307C7.82533 4.80192 7.94087 4.84474 8.06144 4.85442L11.0911 5.09888L8.77949 7.09278Z" fill="currentColor"/>
+                                    </svg>
+
+
+                              {% endif %}
+
+                        {% endfor %}
+
+                        </div>
+
+                        <div class="product-rating__info">
+                          <span>{{ rating_value | round: 2 }}</span>
+
+                          {% if rating_count %}
+                          
+                            <span> {{ rating_count }} reviews</span>
+                      
+                          {% endif %}
+                        </div>
+
+                      </a>
+
                     </div>
-                  {%- endif -%}
+
+                  {% endif %}
+
                 {%- when 'complementary' -%}
                   <product-recommendations
                     class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
@@ -686,10 +764,33 @@
                       <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                     {%- endif -%}
                   </product-recommendations>
-                {%- when 'icon-with-text' -%}
+                
+                  {%  when 'benifits' %} 
+                   
+                      <div class="product-benefits">
+
+                        {% if block.settings.title != blank %}
+                          <p class="product-benefits__heading">
+                            {{ block.settings.title }}
+                          </p>
+                        {% endif %}
+
+                        <ul class="product-benefits__list">
+                          {{ block.settings.benifits }}
+
+                        </ul>
+
+                      </div>
+
+                  {%- when 'icon-with-text' -%}
                   {% render 'icon-with-text', block: block %}
               {%- endcase -%}
             {%- endfor -%}
+
+
+
+
+
             <a href="{{ product.url }}" class="link product__view-details animate-arrow">
               {{ 'products.product.view_full_details' | t }}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -761,6 +862,24 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "product-tags",
+      "name":"Product tags",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "marquee",
+      "name": "Marquee",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item",
+          "label": "Item",
+          "default": "Text"
+        },
+      ]
     },
     {
       "type": "text",
@@ -1247,6 +1366,27 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    },
+    {
+      "type": "benifits",
+      "name":"Benifits",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "benifits",
+          "label": "Benifit"
         }
       ]
     },
@@ -2205,108 +2345,21 @@
       "default": "contain",
       "label": "t:sections.main-product.settings.media_fit.label"
     },
-    {
-      "type": "select",
-      "id": "gallery_layout",
-      "options": [
-        {
-          "value": "stacked",
-          "label": "t:sections.main-product.settings.gallery_layout.options__1.label"
-        },
-        {
-          "value": "columns",
-          "label": "t:sections.main-product.settings.gallery_layout.options__2.label"
-        },
-        {
-          "value": "thumbnail",
-          "label": "t:sections.main-product.settings.gallery_layout.options__3.label"
-        },
-        {
-          "value": "thumbnail_slider",
-          "label": "t:sections.main-product.settings.gallery_layout.options__4.label"
-        }
-      ],
-      "default": "stacked",
-      "label": "t:sections.main-product.settings.gallery_layout.label"
-    },
-    {
-      "type": "select",
-      "id": "mobile_thumbnails",
-      "options": [
-        {
-          "value": "columns",
-          "label": "t:sections.main-product.settings.mobile_thumbnails.options__1.label"
-        },
-        {
-          "value": "show",
-          "label": "t:sections.main-product.settings.mobile_thumbnails.options__2.label"
-        },
-        {
-          "value": "hide",
-          "label": "t:sections.main-product.settings.mobile_thumbnails.options__3.label"
-        }
-      ],
-      "default": "hide",
-      "label": "t:sections.main-product.settings.mobile_thumbnails.label"
-    },
-    {
-      "type": "select",
-      "id": "media_position",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.main-product.settings.media_position.options__1.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.main-product.settings.media_position.options__2.label"
-        }
-      ],
-      "default": "left",
-      "label": "t:sections.main-product.settings.media_position.label"
-    },
-    {
-      "type": "select",
-      "id": "image_zoom",
-      "options": [
-        {
-          "value": "lightbox",
-          "label": "t:sections.main-product.settings.image_zoom.options__1.label"
-        },
-        {
-          "value": "hover",
-          "label": "t:sections.main-product.settings.image_zoom.options__2.label"
-        },
-        {
-          "value": "none",
-          "label": "t:sections.main-product.settings.image_zoom.options__3.label"
-        }
-      ],
-      "default": "lightbox",
-      "label": "t:sections.main-product.settings.image_zoom.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_variants",
-      "default": false,
-      "label": "t:sections.main-product.settings.hide_variants.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_video_looping",
-      "default": false,
-      "label": "t:sections.main-product.settings.enable_video_looping.label"
-    },
+    
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
     },
     {
+      "type": "paragraph",
+      "content": "Desktop"
+    },
+    {
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 36
@@ -2315,10 +2368,34 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom",
       "default": 36
     }
   ]

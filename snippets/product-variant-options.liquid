@@ -21,6 +21,7 @@
 -%}
 
 {%- for value in option.values -%}
+  {%- assign matching_variant = product.variants | where: 'option1', value | first -%}
   {%- liquid
     assign swatch_focal_point = null
     if value.swatch.image
@@ -95,8 +96,48 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
+    {% comment %} <label for="{{ input_id }}">
       {{ value -}}
+      {{ label_unavailable }}
+        
+    </label> {% endcomment %}
+    <label for="{{ input_id }}">
+      <div class="label_badge_wrap">
+        {% assign badge = matching_variant.metafields.custom.badge.value %}
+           {% if badge != blank %}
+            <div class="label_badge">
+              {{ badge }}
+
+            </div>
+           {% endif %}
+
+      </div>
+
+
+
+      <span class="bundle-title">
+        {{ value }}
+      </span>
+
+      <span class="bundle-price">
+        {% if matching_variant.compare_at_price > matching_variant.price %}
+          <s>
+            {{ matching_variant.compare_at_price | money }}
+          </s>
+        {% endif %}
+
+        <span>
+          {{ matching_variant.price | money }}
+        </span>
+        {% assign label = matching_variant.metafields.custom.size.value %}
+
+      {% if label != blank %}
+        <span class="label__wrap">
+          {{ label }}
+        </span>
+      {% endif %}
+      </span>
+
       {{ label_unavailable }}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}

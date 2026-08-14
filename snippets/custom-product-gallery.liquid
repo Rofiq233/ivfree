@@ -1,0 +1,45 @@
+<product-media>
+
+<div class="product__media-slider">
+    <div class="product__swiper swiper" data-slider>
+        <div class="product__media-track swiper-wrapper">
+          {% for media in product.media %}
+              <div
+                  class="product__media-slide swiper-slide"
+                  data-media-item
+                   data-media-id="{{- media.id -}}"
+                   data-index="{{- forloop.index0 -}}"
+               >
+                <div
+                    class="product__image">
+                      {% render 'media-image',
+                          image: media.preview_image,
+                           sizes: '1200px',
+                             width: 1200,
+                             widths: '200,300,400,450,500,550,600,650,700,750,800,850,900,950,1000,1050,1100,1150,1200',
+                              placeholder: 'detailed-apparel-1'
+                              %}
+                    </div>
+
+              </div>
+          {% endfor %} 
+        </div>
+        
+           <div class="product-gallery_arrow-wrap">
+            <div class="swiper-button-next">
+               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.33463 7.99984L12.668 7.99984M12.668 7.99984L8.0013 3.33317M12.668 7.99984L8.0013 12.6665" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"></path>
+               </svg>
+            </div>
+            <div class="swiper-button-prev">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.6654 7.99984L3.33203 7.99984M3.33203 7.99984L7.9987 3.33317M3.33203 7.99984L7.9987 12.6665" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+        </div>
+
+    </div>
+    {% render 'product-gallery-thumbs', product: product %}
+</div>
+
+</product-media>

@@ -26,7 +26,7 @@
          IMAGE
     ========================================== -->
 
-    <div class="faq-image-media">
+    <div class="faq-image-media {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.image != blank %}
 
@@ -56,7 +56,7 @@
          CONTENT
     ========================================== -->
 
-    <div class="faq-content">
+    <div class="faq-content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.heading != blank %}
 

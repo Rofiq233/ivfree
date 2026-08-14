@@ -37,10 +37,11 @@
         "paragraph",
         "email-form"
       ],
+      "disabled": true,
       "settings": {
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-aa48a24f-bd90-4b40-81a1-f62f5f44bd41",
         "full_width": true,
-        "padding_top": 28,
+        "padding_top": 100,
         "padding_bottom": 0
       }
     },
@@ -82,7 +83,7 @@
         "link_list_URhxb4"
       ],
       "settings": {
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-aa48a24f-bd90-4b40-81a1-f62f5f44bd41",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,

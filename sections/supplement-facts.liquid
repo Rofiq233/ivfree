@@ -31,7 +31,7 @@
          HEADER
     ================================== -->
 
-    <div class="supplement-facts__header">
+    <div class="supplement-facts__header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.heading != blank %}
         <h2 class="supplement-facts__heading {{ section.settings.heading_size }}">
@@ -54,7 +54,7 @@
          MAIN CONTENT
     ================================== -->
 
-    <div class="supplement-facts__content">
+    <div class="supplement-facts__content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
 
       <!-- =================================

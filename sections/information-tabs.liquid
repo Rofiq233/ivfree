@@ -21,7 +21,7 @@
   <div class="information-tabs__container page-width">
 
     {% if section.settings.heading != blank %}
-      <div class="information-tabs__heading {{ section.settings.heading_size }}">
+      <div class="information-tabs__heading {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </div>
     {% endif %}
@@ -29,7 +29,7 @@
     {% if section.blocks.size > 0 %}
 
       <div
-        class="information-tabs__nav"
+        class="information-tabs__nav {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
         role="tablist"
         aria-label="{{ section.settings.heading | escape }}"
       >
@@ -57,7 +57,7 @@
 
       </div>
 
-      <div class="information-tabs__content">
+      <div class="information-tabs__content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         {% for block in section.blocks %}
 

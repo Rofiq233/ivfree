@@ -25,7 +25,7 @@
 
     <div class="content-science-accordion__grid">
 
-      <div class="content-science-accordion__content">
+      <div class="content-science-accordion__content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         {% if s.eyebrow != blank %}
           <div class="content-science-accordion__eyebrow">
@@ -95,7 +95,7 @@
       <!-- RIGHT VISUAL -->
       <div class="content-science-accordion__visual">
 
-        <div class="content-science-accordion__visual-card">
+        <div class="content-science-accordion__visual-card {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
           <!-- TOP HIGHLIGHT -->
            <div class="content-science-top-wrap">

@@ -29,7 +29,7 @@
 >
   <div class="page-width">
 
-    <div class="traceable-ingredients__header">
+    <div class="traceable-ingredients__header {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if s.heading != blank %}
         <h2 class="traceable-ingredients__heading {{ s.heading_size }}">
@@ -51,7 +51,7 @@
 
         <div
           class="
-            traceable-ingredient-card gradient color-{{ s.card_color_scheme }}
+            traceable-ingredient-card {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} gradient color-{{ s.card_color_scheme }}
             {% if forloop.index > section.settings.initial_items %}
               traceable-ingredient-card--hidden
             {% endif %}
@@ -116,7 +116,7 @@
 
     {% if section.blocks.size > section.settings.initial_items %}
 
-      <div class="traceable-ingredients__button-wrapper">
+      <div class="traceable-ingredients__button-wrapper {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         <button
           type="button"

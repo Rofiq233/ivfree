@@ -496,3 +496,176 @@ if (!customElements.get('slideshow-swiper')) {
 
 }
 // video slider js end here 
+
+
+
+
+// product page marquee js 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const marquees = document.querySelectorAll('.product-info-marquee');
+
+  marquees.forEach((marquee) => {
+
+    const items = [...marquee.querySelectorAll('.product-marquee')];
+
+    if (!items.length) return;
+
+    let position = 0;
+    let lastTime = performance.now();
+
+    const speed = 60; // px per second
+    let paused = false;
+
+    marquee.addEventListener('mouseenter', () => {
+      paused = true;
+    });
+
+    marquee.addEventListener('mouseleave', () => {
+      paused = false;
+    });
+
+
+    function animate(currentTime) {
+
+      const delta = (currentTime - lastTime) / 1000;
+
+      lastTime = currentTime;
+
+      if (!paused) {
+
+        position -= speed * delta;
+
+        items.forEach((item) => {
+
+          const width = item.offsetWidth;
+          const gap = 30;
+          const totalWidth = width + gap;
+
+          item.style.transform =
+            `translateX(${position}px)`;
+
+        });
+
+
+        /*
+         * When first item completely leaves
+         * the viewport, move it to the end.
+         */
+
+        const firstItem = items[0];
+
+        if (
+          firstItem.getBoundingClientRect().right < 
+          marquee.getBoundingClientRect().left
+        ) {
+
+          const width =
+            firstItem.offsetWidth + 30;
+
+          position += width;
+
+          marquee.appendChild(firstItem);
+
+          items.push(items.shift());
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+  });
+
+});
+
+
+document.addEventListener('click', function (e) {
+  const link = e.target.closest('a[href^="#"]');
+
+  if (!link) return;
+
+  const target = document.querySelector(link.getAttribute('href'));
+
+  if (!target) return;
+
+  e.preventDefault();
+
+  target.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+});
+
+
+// var thumbsSwiper = new Swiper(".mySwiper", {
+//   loop: true,
+//   spaceBetween: 10,
+//   slidesPerView: 4,
+//   freeMode: true,
+//   watchSlidesProgress: true,
+//  navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   breakpoints: {
+//     0: {
+//       slidesPerView: 3,
+//     },
+//     768: {
+//       slidesPerView: 4,
+//     },
+//     1024: {
+//       slidesPerView: 4,
+//     },
+//   },
+// });
+
+
+// window.productSwiper = new Swiper('.product__swiper', {
+//   loop: true,
+//   spaceBetween: 8,
+
+//   thumbs: {
+//     swiper: thumbsSwiper,
+//   },
+  
+// });
+
+const thumbsSwiper = new Swiper(".mySwiper", {
+  loop: true,
+  spaceBetween: 0,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+
+  breakpoints: {
+    0: {
+      slidesPerView: 3,
+    },
+    768: {
+      slidesPerView: 4,
+    },
+    1024: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+
+window.productSwiper = new Swiper(".product__swiper", {
+  loop: true,
+  spaceBetween: 8,
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  thumbs: {
+    swiper: thumbsSwiper,
+  },
+});

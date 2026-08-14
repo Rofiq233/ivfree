@@ -13,7 +13,7 @@
   }
 {%- endstyle -%}
 <div
-  class="logo-marquee section-{{ section.id }} section-{{ section.id }}-padding"
+  class="logo-marquee section-{{ section.id }} section-{{ section.id }}-padding {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
   data-logo-marquee
   data-section-id="{{ section.id }}"
   data-speed="{{ section.settings.marquee_speed }}"

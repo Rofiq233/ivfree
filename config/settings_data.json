@@ -153,6 +153,11 @@
         "type": "shopify://apps/gempages-builder/blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
         "disabled": true,
         "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
@@ -257,7 +262,33 @@
           "input_color": "#020714",
           "input_outline": "#e3e3e3",
           "placeholder": "#e3e3e3",
-          "border_color": "#FFFFFF"
+          "border_color": "#ffffff"
+        }
+      },
+      "scheme-ac4a5f07-8a11-422a-b72f-24e6d7a047ea": {
+        "settings": {
+          "background": "#faf5ec",
+          "background_gradient": "",
+          "heading": "#14213a",
+          "text": "#14213a",
+          "primary_button": "#2e8c8c",
+          "primary_button_label": "#14213a",
+          "primary_button_hover": "#e7a93c",
+          "primary_button_label_hover": "#14213a",
+          "primary_button_outline": "#14213a",
+          "primary_button_outline_hover": "#14213a",
+          "secondary_button": "#ffffff",
+          "secondary_button_label": "#14213a",
+          "secondary_button_hover": "#14213a",
+          "secondary_button_label_hover": "#faf5ec",
+          "secondary_button_outline": "#14213a",
+          "secondary_button_outline_hover": "#14213a",
+          "shadow": "#000000",
+          "input_bg_color": "#ffffff",
+          "input_color": "#020714",
+          "input_outline": "#e3e3e3",
+          "placeholder": "#e3e3e3",
+          "border_color": "#14213a"
         }
       }
     }

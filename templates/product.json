@@ -12,6 +12,64 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "product_tags_PwU8dV": {
+          "type": "product-tags",
+          "settings": {}
+        },
+        "marquee_WWfFGw": {
+          "type": "marquee",
+          "settings": {
+            "item": "VEGAN & SUGAR-FREE"
+          }
+        },
+        "marquee_R7DxhU": {
+          "type": "marquee",
+          "settings": {
+            "item": "120 TABLETS"
+          }
+        },
+        "marquee_TJiaGc": {
+          "type": "marquee",
+          "settings": {
+            "item": "VEGAN & SUGAR-FREE"
+          }
+        },
+        "marquee_D8dFzC": {
+          "type": "marquee",
+          "settings": {
+            "item": "VEGAN & SUGAR-FREE"
+          }
+        },
+        "marquee_hppGxt": {
+          "type": "marquee",
+          "settings": {
+            "item": "FORMULATED FOR UP TO 5× ABSORPTION"
+          }
+        },
+        "marquee_paNCP4": {
+          "type": "marquee",
+          "settings": {
+            "item": "120 TABLETS"
+          }
+        },
+        "marquee_wTURGc": {
+          "type": "marquee",
+          "settings": {
+            "item": "THIRD-PARTY TESTED"
+          }
+        },
+        "marquee_bk9JfN": {
+          "type": "marquee",
+          "settings": {
+            "item": "Text"
+          }
+        },
+        "marquee_EB8biY": {
+          "type": "marquee",
+          "settings": {
+            "item": "THIRD-PARTY TESTED"
+          }
+        },
         "custom_liquid_8g6eVT": {
           "type": "custom_liquid",
           "disabled": true,
@@ -25,7 +83,16 @@
         },
         "rating": {
           "type": "rating",
-          "settings": {}
+          "settings": {
+            "title": "<p><strong>4</strong><em><strong> </strong></em><strong>Essential Minerals</strong> <br/>One daily tablet</p>"
+          }
+        },
+        "benifits_ii4nkc": {
+          "type": "benifits",
+          "settings": {
+            "title": "Why Hydrate?",
+            "benifits": "<ul><li>Daily electrolyte support</li><li>Magnesium + potassium</li><li>Sodium + zinc</li><li>Vegan and sugar-free</li></ul>"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -50,9 +117,8 @@
         },
         "custom_liquid_dzLE78": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
-            "custom_liquid": "{% assign hydrate_discount_code = 'HYDRATE7' %}\n{% assign hydrate_discount_amount = '7%' %}\n\n<div\n  class=\"hydrate-discount\"\n  id=\"hydrate-discount-{{ product.id }}\"\n  data-discount-code=\"{{ hydrate_discount_code }}\"\n>\n  <div class=\"hydrate-discount__message\">\n    <span class=\"hydrate-discount__icon\" aria-hidden=\"true\">\n      <svg viewBox=\"0 0 24 24\" role=\"img\">\n        <path d=\"M12 2.5 14.2 5l3.3-.3.8 3.2 3 1.4-1.4 3 1.4 3-3 1.4-.8 3.2-3.3-.3L12 22l-2.2-2.5-3.3.3-.8-3.2-3-1.4 1.4-3-1.4-3 3-1.4.8-3.2 3.3.3L12 2.5Z\"/>\n        <path d=\"m8.5 15.5 7-7M9 9h.01M15 15h.01\"/>\n      </svg>\n    </span>\n\n    <span>\n      Get flat <strong>{{ hydrate_discount_amount }} off</strong> on your order.\n    </span>\n  </div>\n\n  <button\n    class=\"hydrate-discount__code\"\n    type=\"button\"\n    aria-label=\"Copy discount code {{ hydrate_discount_code }}\"\n  >\n    <span>Use code:</span>\n    <strong>{{ hydrate_discount_code }}</strong>\n\n    <svg class=\"hydrate-discount__copy-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n      <rect x=\"8\" y=\"8\" width=\"11\" height=\"13\" rx=\"1.5\"></rect>\n      <path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3\"></path>\n    </svg>\n\n    <span class=\"hydrate-discount__feedback\" aria-live=\"polite\"></span>\n  </button>\n</div>\n\n<style>\n  #hydrate-discount-{{ product.id }} {\n    --discount-ink: #14213a;\n    --discount-accent: #2e8c8c;\n    --discount-background: #e2f0ee;\n    --discount-divider: rgba(20, 33, 58, 0.12);\n\n    display: grid;\n    grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);\n    width: 100%;\n    margin: 1.8rem 0;\n    overflow: hidden;\n    color: var(--discount-ink);\n    background: var(--discount-background);\n    border: 1px solid var(--discount-divider);\n    border-radius: 0.8rem;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__message {\n    display: flex;\n    align-items: center;\n    gap: 1.2rem;\n    min-width: 0;\n    padding: 1.5rem 1.7rem;\n    font-size: 1.55rem;\n    line-height: 1.3;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__icon {\n    display: inline-flex;\n    flex: 0 0 3rem;\n    width: 3rem;\n    height: 3rem;\n    align-items: center;\n    justify-content: center;\n    color: #fff;\n    background: var(--discount-accent);\n    border-radius: 50%;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__icon svg {\n    width: 2rem;\n    height: 2rem;\n    fill: currentColor;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__icon svg path:last-child {\n    fill: none;\n    stroke: var(--discount-accent);\n    stroke-linecap: round;\n    stroke-width: 1.8;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__code {\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 0.6rem;\n    min-width: 0;\n    padding: 1.5rem;\n    color: var(--discount-ink);\n    background: transparent;\n    border: 0;\n    border-left: 1px solid var(--discount-divider);\n    border-radius: 0;\n    box-shadow: none;\n    font: inherit;\n    font-size: 1.45rem;\n    cursor: pointer;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__code:hover {\n    background: rgba(46, 140, 140, 0.09);\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__code strong {\n    color: var(--discount-accent);\n    font-weight: 700;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__copy-icon {\n    width: 1.8rem;\n    height: 1.8rem;\n    fill: none;\n    stroke: var(--discount-accent);\n    stroke-width: 1.8;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__feedback {\n    position: absolute;\n    right: 0.8rem;\n    bottom: 0.25rem;\n    color: var(--discount-accent);\n    font-size: 1rem;\n  }\n\n  @media screen and (max-width: 749px) {\n    #hydrate-discount-{{ product.id }} {\n      grid-template-columns: 1fr;\n    }\n\n    #hydrate-discount-{{ product.id }} .hydrate-discount__message,\n    #hydrate-discount-{{ product.id }} .hydrate-discount__code {\n      justify-content: flex-start;\n      padding: 1.3rem 1.4rem;\n    }\n\n    #hydrate-discount-{{ product.id }} .hydrate-discount__code {\n      border-top: 1px solid var(--discount-divider);\n      border-left: 0;\n    }\n  }\n</style>\n\n<script>\n  (() => {\n    const banner = document.getElementById(\n      'hydrate-discount-{{ product.id }}'\n    );\n\n    if (!banner || banner.dataset.initialized === 'true') return;\n\n    banner.dataset.initialized = 'true';\n\n    const button = banner.querySelector('.hydrate-discount__code');\n    const feedback = banner.querySelector('.hydrate-discount__feedback');\n    const code = banner.dataset.discountCode;\n\n    button.addEventListener('click', async () => {\n      try {\n        await navigator.clipboard.writeText(code);\n        feedback.textContent = 'Copied!';\n      } catch (error) {\n        const input = document.createElement('input');\n        input.value = code;\n        document.body.appendChild(input);\n        input.select();\n        document.execCommand('copy');\n        input.remove();\n        feedback.textContent = 'Copied!';\n      }\n\n      window.setTimeout(() => {\n        feedback.textContent = '';\n      }, 1800);\n    });\n  })();\n</script>"
+            "custom_liquid": "{% assign hydrate_discount_code = 'HYDRATE7' %}\n{% assign hydrate_discount_amount = '7%' %}\n\n<div\n  class=\"hydrate-discount\"\n  id=\"hydrate-discount-{{ product.id }}\"\n  data-discount-code=\"{{ hydrate_discount_code }}\"\n>\n  <div class=\"hydrate-discount__message\">\n    <span class=\"hydrate-discount__icon\" aria-hidden=\"true\">\n      <svg viewBox=\"0 0 24 24\" role=\"img\">\n        <path d=\"M12 2.5 14.2 5l3.3-.3.8 3.2 3 1.4-1.4 3 1.4 3-3 1.4-.8 3.2-3.3-.3L12 22l-2.2-2.5-3.3.3-.8-3.2-3-1.4 1.4-3-1.4-3 3-1.4.8-3.2 3.3.3L12 2.5Z\"/>\n        <path d=\"m8.5 15.5 7-7M9 9h.01M15 15h.01\"/>\n      </svg>\n    </span>\n\n    <span>\n      Get flat <strong>{{ hydrate_discount_amount }} off</strong> on your order.\n    </span>\n  </div>\n\n  <button\n    class=\"hydrate-discount__code\"\n    type=\"button\"\n    aria-label=\"Copy discount code {{ hydrate_discount_code }}\"\n  >\n    <span>Use code:</span>\n    <strong>{{ hydrate_discount_code }}</strong>\n\n    <svg class=\"hydrate-discount__copy-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n      <rect x=\"8\" y=\"8\" width=\"11\" height=\"13\" rx=\"1.5\"></rect>\n      <path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3\"></path>\n    </svg>\n\n    <span class=\"hydrate-discount__feedback\" aria-live=\"polite\"></span>\n  </button>\n</div>\n\n<style>\n  #hydrate-discount-{{ product.id }} {\n    --discount-ink: #14213a;\n    --discount-accent: #2e8c8c;\n    --discount-background: #e2f0ee;\n    --discount-divider: rgba(20, 33, 58, 0.12);\n\n    display: grid;\n    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);\n    width: 100%;\n    margin: 1.8rem 0;\n    overflow: hidden;\n    color: var(--discount-ink);\n    background: var(--discount-background);\n    border: 1px solid var(--discount-divider);\n    border-radius: 0.8rem;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__message {\n    display: flex;\n    align-items: center;\n    gap: 1.2rem;\n    min-width: 0;\n    padding: 1.5rem 0.5rem;\n    font-size: 1.55rem;\n    line-height: 1.3;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__icon {\n    display: inline-flex;\n    flex: 0 0 3rem;\n    width: 3rem;\n    height: 3rem;\n    align-items: center;\n    justify-content: center;\n    color: #fff;\n    background: var(--discount-accent);\n    border-radius: 50%;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__icon svg {\n    width: 2rem;\n    height: 2rem;\n    fill: currentColor;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__icon svg path:last-child {\n    fill: none;\n    stroke: var(--discount-accent);\n    stroke-linecap: round;\n    stroke-width: 1.8;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__code {\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 0.6rem;\n    min-width: 0;\n    padding: 1.5rem;\n    color: var(--discount-ink);\n    background: transparent;\n    border: 0;\n    border-left: 1px solid var(--discount-divider);\n    border-radius: 0;\n    box-shadow: none;\n    font: inherit;\n    font-size: 1.45rem;\n    cursor: pointer;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__code:hover {\n    background: rgba(46, 140, 140, 0.09);\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__code strong {\n    color: var(--discount-accent);\n    font-weight: 700;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__copy-icon {\n    width: 1.8rem;\n    height: 1.8rem;\n    fill: none;\n    stroke: var(--discount-accent);\n    stroke-width: 1.8;\n  }\n\n  #hydrate-discount-{{ product.id }} .hydrate-discount__feedback {\n    position: absolute;\n    right: 0.8rem;\n    bottom: 0.25rem;\n    color: var(--discount-accent);\n    font-size: 1rem;\n  }\n\n  @media screen and (max-width: 749px) {\n    #hydrate-discount-{{ product.id }} {\n      grid-template-columns: 1fr;\n    }\n\n    #hydrate-discount-{{ product.id }} .hydrate-discount__message,\n    #hydrate-discount-{{ product.id }} .hydrate-discount__code {\n      justify-content: flex-start;\n      padding: 0.5rem 1.4rem;\n    }\n\n    #hydrate-discount-{{ product.id }} .hydrate-discount__code {\n      border-top: 1px solid var(--discount-divider);\n      border-left: 0;\n    }\n  }\n</style>\n\n<script>\n  (() => {\n    const banner = document.getElementById(\n      'hydrate-discount-{{ product.id }}'\n    );\n\n    if (!banner || banner.dataset.initialized === 'true') return;\n\n    banner.dataset.initialized = 'true';\n\n    const button = banner.querySelector('.hydrate-discount__code');\n    const feedback = banner.querySelector('.hydrate-discount__feedback');\n    const code = banner.dataset.discountCode;\n\n    button.addEventListener('click', async () => {\n      try {\n        await navigator.clipboard.writeText(code);\n        feedback.textContent = 'Copied!';\n      } catch (error) {\n        const input = document.createElement('input');\n        input.value = code;\n        document.body.appendChild(input);\n        input.select();\n        document.execCommand('copy');\n        input.remove();\n        feedback.textContent = 'Copied!';\n      }\n\n      window.setTimeout(() => {\n        feedback.textContent = '';\n      }, 1800);\n    });\n  })();\n</script>"
           }
         },
         "custom_liquid_cGi7wc": {
@@ -61,21 +127,45 @@
           "settings": {
             "custom_liquid": "{% assign selected_variant = product.selected_or_first_available_variant %}\n\n<div\n  class=\"hydrate-purchase\"\n  id=\"hydrate-purchase-{{ section.id }}-{{ product.id }}\"\n>\n  {% form 'product',\n    product,\n    class: 'hydrate-purchase__form'\n  %}\n\n    <input\n      class=\"hydrate-purchase__variant\"\n      type=\"hidden\"\n      name=\"id\"\n      value=\"{{ selected_variant.id }}\"\n    >\n\n    <div class=\"hydrate-purchase__quantity\">\n      <button\n        class=\"hydrate-purchase__quantity-button\"\n        type=\"button\"\n        data-action=\"decrease\"\n        aria-label=\"Decrease quantity\"\n      >\n        −\n      </button>\n\n      <input\n        class=\"hydrate-purchase__quantity-input\"\n        type=\"number\"\n        name=\"quantity\"\n        value=\"1\"\n        min=\"1\"\n        inputmode=\"numeric\"\n        aria-label=\"Product quantity\"\n      >\n\n      <button\n        class=\"hydrate-purchase__quantity-button\"\n        type=\"button\"\n        data-action=\"increase\"\n        aria-label=\"Increase quantity\"\n      >\n        +\n      </button>\n    </div>\n\n    <button\n      class=\"hydrate-purchase__submit\"\n      type=\"submit\"\n      name=\"add\"\n      {% unless selected_variant.available %}\n        disabled\n      {% endunless %}\n    >\n      {% if selected_variant.available %}\n        ADD TO CART\n      {% else %}\n        SOLD OUT\n      {% endif %}\n    </button>\n\n  {% endform %}\n</div>\n\n<style>\n  .hydrate-purchase {\n    --hydrate-navy: #14213a;\n    --hydrate-teal: #2e8c8c;\n    --hydrate-cream: #faf5ec;\n    --hydrate-bone: #ede6d8;\n    --hydrate-white: #ffffff;\n\n    width: 100%;\n    margin: 18px 0;\n    overflow: hidden;\n    background: var(--hydrate-cream);\n    border: 1px solid var(--hydrate-bone);\n    border-radius: 10px;\n  }\n\n  .hydrate-purchase *,\n  .hydrate-purchase *::before,\n  .hydrate-purchase *::after {\n    box-sizing: border-box;\n  }\n\n  .hydrate-purchase__form {\n    display: block;\n    width: 100%;\n    margin: 0;\n  }\n\n  .hydrate-purchase__quantity {\n    display: grid;\n    grid-template-columns: repeat(3, 74px);\n    justify-content: start;\n    width: 100%;\n    min-height: 62px;\n  }\n\n  .hydrate-purchase__quantity-button,\n  .hydrate-purchase__quantity-input {\n    display: flex;\n    width: 74px;\n    min-width: 74px;\n    height: 62px;\n    align-items: center;\n    justify-content: center;\n    margin: 0;\n    padding: 0;\n    color: var(--hydrate-navy);\n    background: transparent;\n    border: 0;\n    border-right: 1px solid var(--hydrate-bone);\n    border-radius: 0;\n    box-shadow: none;\n    font: inherit;\n    font-size: 22px;\n    line-height: 1;\n    text-align: center;\n    appearance: none;\n    -webkit-appearance: none;\n  }\n\n  .hydrate-purchase__quantity-button {\n    cursor: pointer;\n    transition:\n      color 150ms ease,\n      background-color 150ms ease;\n  }\n\n  .hydrate-purchase__quantity-button:hover {\n    color: var(--hydrate-white);\n    background: var(--hydrate-teal);\n  }\n\n  .hydrate-purchase__quantity-input {\n    -moz-appearance: textfield;\n  }\n\n  .hydrate-purchase__quantity-input::-webkit-inner-spin-button,\n  .hydrate-purchase__quantity-input::-webkit-outer-spin-button {\n    margin: 0;\n    appearance: none;\n    -webkit-appearance: none;\n  }\n\n  .hydrate-purchase__submit {\n    display: flex;\n    width: 100%;\n    min-height: 62px;\n    align-items: center;\n    justify-content: center;\n    margin: 0;\n    padding: 14px 22px;\n    color: var(--hydrate-white);\n    background: linear-gradient(\n      100deg,\n      var(--hydrate-teal) 0%,\n      var(--hydrate-navy) 100%\n    );\n    border: 0;\n    border-radius: 0;\n    box-shadow: none;\n    font: inherit;\n    font-size: 18px;\n    font-weight: 700;\n    line-height: 1;\n    cursor: pointer;\n  }\n\n  .hydrate-purchase__submit:hover {\n    filter: brightness(1.06);\n  }\n\n  .hydrate-purchase__submit:disabled {\n    cursor: not-allowed;\n    opacity: 0.5;\n  }\n\n  .hydrate-purchase__quantity-button:focus-visible,\n  .hydrate-purchase__quantity-input:focus-visible,\n  .hydrate-purchase__submit:focus-visible {\n    position: relative;\n    z-index: 2;\n    outline: 3px solid rgba(46, 140, 140, 0.4);\n    outline-offset: -3px;\n  }\n\n  /* Mobile: quantity and Add to Cart side by side */\n\n@media screen and (max-width: 749px) {\n  .hydrate-purchase {\n    margin: 12px 0;\n    overflow: visible;\n    background: transparent;\n    border: 0;\n    border-radius: 0;\n  }\n\n  .hydrate-purchase__form {\n    display: grid;\n    grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.4fr);\n    align-items: stretch;\n    gap: 8px;\n    width: 100%;\n  }\n\n  .hydrate-purchase__quantity {\n    display: grid;\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n    width: 100%;\n    min-width: 0;\n    min-height: 56px;\n    overflow: hidden;\n    background: var(--hydrate-cream);\n    border: 1px solid var(--hydrate-bone);\n    border-radius: 8px;\n  }\n\n  .hydrate-purchase__quantity-button,\n  .hydrate-purchase__quantity-input {\n    width: 100%;\n    min-width: 0;\n    height: 56px;\n    border: 0;\n    border-right: 1px solid var(--hydrate-bone);\n    font-size: 20px;\n  }\n\n  .hydrate-purchase__quantity-button:last-child {\n    border-right: 0;\n  }\n\n  .hydrate-purchase__submit {\n    width: 100%;\n    min-width: 0;\n    min-height: 56px;\n    padding: 10px 14px;\n    border-radius: 8px;\n    font-size: 17px;\n    white-space: nowrap;\n  }\n}\n\n/* Narrow phones */\n\n@media screen and (max-width: 390px) {\n  .hydrate-purchase__form {\n    grid-template-columns: minmax(132px, 0.75fr) minmax(0, 1.25fr);\n    gap: 6px;\n  }\n\n  .hydrate-purchase__quantity,\n  .hydrate-purchase__quantity-button,\n  .hydrate-purchase__quantity-input {\n    min-height: 52px;\n    height: 52px;\n  }\n\n  .hydrate-purchase__quantity-button,\n  .hydrate-purchase__quantity-input {\n    font-size: 18px;\n  }\n\n  .hydrate-purchase__submit {\n    min-height: 52px;\n    padding: 8px 10px;\n    font-size: 15px;\n  }\n}\n\n/* Extremely narrow phones */\n\n@media screen and (max-width: 330px) {\n  .hydrate-purchase__form {\n    grid-template-columns: 125px minmax(0, 1fr);\n  }\n\n  .hydrate-purchase__submit {\n    font-size: 13px;\n  }\n}"
           }
+        },
+        "quantity_selector_CMfLKW": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_aqFN38": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
         }
       },
       "block_order": [
+        "product_tags_PwU8dV",
+        "marquee_WWfFGw",
+        "marquee_R7DxhU",
+        "marquee_TJiaGc",
+        "marquee_D8dFzC",
+        "marquee_hppGxt",
+        "marquee_paNCP4",
+        "marquee_wTURGc",
+        "marquee_bk9JfN",
+        "marquee_EB8biY",
         "custom_liquid_8g6eVT",
         "title",
         "rating",
+        "benifits_ii4nkc",
         "variant_picker",
         "custom_liquid_txzejx",
         "custom_liquid_nBxTDA",
         "custom_liquid_dzLE78",
-        "custom_liquid_cGi7wc"
+        "custom_liquid_cGi7wc",
+        "quantity_selector_CMfLKW",
+        "buy_buttons_aqFN38"
       ],
       "settings": {
         "enable_sticky_info": false,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-ac4a5f07-8a11-422a-b72f-24e6d7a047ea",
         "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -85,8 +175,8 @@
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "logo_marquee_GRYwGG": {
@@ -883,6 +973,175 @@
         "how_to_use_description": "Take one tablet daily after breakfast or lunch or as directed by your healthcare practitioner.",
         "section_color_scheme": "scheme-3"
       }
+    },
+    "faq_image_cwVfFL": {
+      "type": "faq-image",
+      "blocks": {
+        "faq_YnBncr": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LongеVit™ and what does it do?",
+            "answer": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+          }
+        },
+        "faq_wCRpVf": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LongеVit™ and what does it do?",
+            "answer": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+          }
+        },
+        "faq_bpdK9K": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LongеVit™ and what does it do?",
+            "answer": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+          }
+        },
+        "faq_f46Gjk": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LongеVit™ and what does it do?",
+            "answer": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+          }
+        },
+        "faq_8jMjj4": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LongеVit™ and what does it do?",
+            "answer": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+          }
+        },
+        "faq_VG6fkU": {
+          "type": "faq",
+          "settings": {
+            "question": "What is LongеVit™ and what does it do?",
+            "answer": "<p>LongеVit™ is a comprehensive dietary supplement formulated to support healthy ageing, vitality, and overall well-being.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_YnBncr",
+        "faq_wCRpVf",
+        "faq_bpdK9K",
+        "faq_f46Gjk",
+        "faq_8jMjj4",
+        "faq_VG6fkU"
+      ],
+      "name": "FAQ with image",
+      "settings": {
+        "heading": "Frequently Asked",
+        "heading_size": "h1",
+        "heading_italic": "Questions",
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "content_cards_J4L8iD": {
+      "type": "content-cards",
+      "blocks": {
+        "card_cnVcHy": {
+          "type": "card",
+          "settings": {
+            "title": "Dr Richard Kaszynski, MD, PhD",
+            "text": "Global healthcare innovator and longevity science advisor.",
+            "badge": "Harvard Medical School"
+          }
+        },
+        "card_m7XAW4": {
+          "type": "card",
+          "settings": {
+            "title": "Dr Xiaofeng Tong, PhD",
+            "text": "Award-winning scientist with published research in leading journals.",
+            "badge": "International Research Fellow"
+          }
+        },
+        "card_zcn8a4": {
+          "type": "card",
+          "settings": {
+            "title": "Dr Xianjie Fang, PhD",
+            "text": "Published in Science, Nature Chemistry, and other top global journals.",
+            "badge": "Shanghai Jiao Tong University"
+          }
+        }
+      },
+      "block_order": [
+        "card_cnVcHy",
+        "card_m7XAW4",
+        "card_zcn8a4"
+      ],
+      "name": "Content Cards",
+      "settings": {
+        "heading": "The Minds Behind The World's Leading NMN",
+        "heading_size": "h1",
+        "description": "<p>Decode Age is proud to bring Uthever® NMN, developed by world-renowned scientists - exclusively to India.</p>",
+        "text_style": "body",
+        "show_progress": true,
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "mobile_padding_top": 36,
+        "mobile_padding_bottom": 36
+      }
+    },
+    "17866061254352adaa": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_k7qRwe": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        },
+        "judge_me_reviews_review_widget_bBzijP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_k7qRwe",
+        "judge_me_reviews_review_widget_bBzijP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -896,6 +1155,9 @@
     "science_accordion_F3nWyV",
     "scroll_stat_cards_DEqide",
     "information_tabs_6f6cbC",
-    "supplement_facts_NF6aDW"
+    "supplement_facts_NF6aDW",
+    "faq_image_cwVfFL",
+    "content_cards_J4L8iD",
+    "17866061254352adaa"
   ]
 }

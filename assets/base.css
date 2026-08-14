@@ -511,7 +511,7 @@ h6:empty {
   text-underline-offset: 0.3rem;
   color: rgb(var(--color-link));
   background-color: transparent;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-family: inherit;
 }
 
@@ -2361,6 +2361,9 @@ input[type='checkbox'] {
   letter-spacing: 0.1rem;
   min-height: 3.8rem;
 }
+.announcement-bar__message span{
+ font-size: 18p;
+}
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
 .announcement-bar-slider--fade-in-previous .announcement-bar__message,
@@ -2908,9 +2911,15 @@ details[open]>.header__submenu {
 }
 
 .header__menu-item {
-  padding: 1.2rem;
+  padding: 1.6rem;
   text-decoration: none;
   color: rgba(var(--color-foreground), 0.75);
+}
+.header__menu-item {
+  padding: 1.8rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
 }
 
 .header__menu-item:hover {

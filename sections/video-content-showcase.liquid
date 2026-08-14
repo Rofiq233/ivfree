@@ -50,7 +50,7 @@
 
   <div class="video-content-showcase__container gradient color-{{ section.settings.section_color_scheme }}">
 
-    <div class="video-content-showcase__content">
+    <div class="video-content-showcase__content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       {% if section.settings.eyebrow != blank %}
         <div class="video-content-showcase__eyebrow">
@@ -83,7 +83,7 @@
 
       {% if link_blocks.size > 0 %}
 
-        <div class="video-content-showcase__links">
+        <div class="video-content-showcase__links {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
           {% for block in link_blocks %}
 
@@ -146,7 +146,7 @@
 
     {% if certification_blocks.size > 0 %}
 
-      <div class="video-content-showcase__certifications">
+      <div class="video-content-showcase__certifications {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         {% for block in certification_blocks %}
 

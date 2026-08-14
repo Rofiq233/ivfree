@@ -27,7 +27,7 @@
   <div class="vitamin-timeline page-width">
 
 
-    <div class="vitamin-timeline__heading">
+    <div class="vitamin-timeline__heading {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       {% if s.heading != blank %}
         <h2 class="{{ s.heading_size }}">
           {{ s.heading }}
@@ -36,7 +36,7 @@
     </div>
 
 
-    <div class="vitamin-timeline__main">
+    <div class="vitamin-timeline__main {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
       <!-- =======================================
            LEFT SIDE
@@ -44,7 +44,7 @@
 
       <div class="vitamin-timeline__left">
 
-        <div class="vitamin-timeline__items">
+        <div class="vitamin-timeline__items {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
           <!-- Vertical Line -->
           <span class="vitamin-timeline__vertical-line"></span>
@@ -138,7 +138,7 @@
            RIGHT SIDE
       ======================================== -->
 
-      <div class="vitamin-timeline__right">
+      <div class="vitamin-timeline__right {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 
         <div class="vitamin-timeline__slider swiper">
 
